@@ -1,15 +1,35 @@
+# Ignore Android Studio/IntelliJ IDEA files
 *.iml
 .gradle
+/.idea/
+.local.properties
+local.properties
 /local.properties
+
+# Ignore specific .idea files
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
+/.idea/inspectionProfiles
+/.idea/shelf
+
+# Ignore build output
 /build
 /captures
-.externalNativeBuild
-.cxx
-local.properties
+/.externalNativeBuild
+/.cxx
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore test-related files
+/androidTestResultsUserPreferences.xml
+/.idea/runConfigurations.xml
+/.idea/migrations.xml
+
+# Ignore logs
+*.log

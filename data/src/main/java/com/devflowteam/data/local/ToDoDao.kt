@@ -1,0 +1,20 @@
+package com.devflowteam.data.local
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Query
+import androidx.room.Upsert
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface ToDoDao {
+
+    @Upsert
+    suspend fun insert(toDoEntity: ToDoEntity)
+
+    @Delete
+    suspend fun delete(toDoEntity: ToDoEntity)
+
+    @Query("SELECT * FROM ToDoEntity ORDER BY id ASC")
+    fun getAll(): Flow<List<ToDoEntity>>
+}
