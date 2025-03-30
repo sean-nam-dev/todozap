@@ -15,7 +15,6 @@ ksp = "1.9.24-1.0.20"
 mockitoCore = "5.11.0"
 mockitoKotlin = "5.2.1"
 room = "2.6.1"
-roomCommon = "2.6.1"
 desugarJdkLibs = "2.1.5"
 truth = "1.1.5"
 
@@ -37,7 +36,6 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }

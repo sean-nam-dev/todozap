@@ -2,8 +2,16 @@ package com.devflowteam.todozap
 
 import android.content.Context
 import com.devflowteam.domain.repository.ToDoRepository
+import com.devflowteam.domain.usecase.ChangeDarkModeUseCase
+import com.devflowteam.domain.usecase.ChangeFirstLaunchUseCase
+import com.devflowteam.domain.usecase.ChangeIDUseCase
+import com.devflowteam.domain.usecase.ChangeServerUseCase
 import com.devflowteam.domain.usecase.DeleteToDoUseCase
 import com.devflowteam.domain.usecase.GetAllToDoUseCase
+import com.devflowteam.domain.usecase.GetDarkModeUseCase
+import com.devflowteam.domain.usecase.GetFirstLaunchUseCase
+import com.devflowteam.domain.usecase.GetIDUseCase
+import com.devflowteam.domain.usecase.GetServerUseCase
 import com.devflowteam.domain.usecase.InsertToDoUseCase
 import com.devflowteam.todozap.di.appModule
 import com.devflowteam.todozap.di.dataModule
@@ -60,5 +68,53 @@ class KoinModuleTest: KoinTest {
     fun `test DeleteToDoUseCase injection`() {
         val useCase: DeleteToDoUseCase = get()
         assertNotNull(useCase, "DeleteToDoUseCase should not be null")
+    }
+
+    @Test
+    fun `test GetServerUseCase injection`() {
+        val useCase: GetServerUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test ChangeServerUseCase injection`() {
+        val useCase: ChangeServerUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test GetIDUseCase injection`() {
+        val useCase: GetIDUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test ChangeIDUseCase injection`() {
+        val useCase: ChangeIDUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test GetDarkModeUseCase injection`() {
+        val useCase: GetDarkModeUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test ChangeDarkModeUseCase injection`() {
+        val useCase: ChangeDarkModeUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test GetFirstLaunchUseCase injection`() {
+        val useCase: GetFirstLaunchUseCase = get()
+        assertNotNull(useCase, "  should not be null")
+    }
+
+    @Test
+    fun `test ChangeFirstLaunchUseCase injection`() {
+        val useCase: ChangeFirstLaunchUseCase = get()
+        assertNotNull(useCase, "  should not be null")
     }
 }

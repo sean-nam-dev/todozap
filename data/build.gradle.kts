@@ -39,6 +39,11 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
 
+    implementation("androidx.datastore:datastore-preferences:1.1.4")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
@@ -48,6 +53,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.test)
 
     coreLibraryDesugaring(libs.desugarJdkLibs)
+
     implementation(libs.truth)
 
     implementation(libs.androidx.core.ktx)
