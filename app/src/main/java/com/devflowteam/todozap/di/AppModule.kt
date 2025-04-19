@@ -4,6 +4,8 @@ import org.koin.dsl.module
 
 val appModule = module {
 
+//    factory { MyViewModel(get()) }
+
 //    viewModel<SomeViewModel> {
 //        SomeViewModel(
 //            userCase1 = get(),

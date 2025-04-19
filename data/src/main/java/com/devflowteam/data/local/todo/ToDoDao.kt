@@ -1,4 +1,4 @@
-package com.devflowteam.data.local
+package com.devflowteam.data.local.todo
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
     alias(libs.plugins.ksp)
 }
 
@@ -45,6 +46,12 @@ dependencies {
     implementation(project(":presentation"))
 
     implementation(libs.androidx.room.ktx)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    testImplementation("com.google.code.gson:gson:2.10.1")
 
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)

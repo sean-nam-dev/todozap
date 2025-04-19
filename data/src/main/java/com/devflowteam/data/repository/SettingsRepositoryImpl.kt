@@ -15,13 +15,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlin.reflect.KClass
 
-class SettingsRepositoryImpl(private val context: Context): SettingsRepository {
+class SettingsRepositoryImpl(private val context: Context) : SettingsRepository {
 
     override fun <T> read(s: Settings<T>): Flow<T> {
         val preferencesKey = getPreferencesKey(s.key, s.defaultValue!!::class)
 
         return context.dataStore.data
             .map { preferences ->
+                if (preferences[preferencesKey] == null) {
+                    write(s, s.defaultValue)
+                }
                 preferences[preferencesKey] ?: s.defaultValue
             }
     }

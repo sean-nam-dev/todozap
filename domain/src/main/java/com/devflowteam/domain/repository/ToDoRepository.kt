@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ToDoRepository {
 
-    suspend fun insert(toDo: ToDo): Result<Unit, DataError.Local>
+    suspend fun upsert(toDo: ToDo): Result<Unit, DataError.Local>
 
     suspend fun delete(toDo: ToDo): Result<Unit, DataError.Local>
 

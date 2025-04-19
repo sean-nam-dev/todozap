@@ -12,7 +12,7 @@ import com.devflowteam.domain.usecase.GetDarkModeUseCase
 import com.devflowteam.domain.usecase.GetFirstLaunchUseCase
 import com.devflowteam.domain.usecase.GetIDUseCase
 import com.devflowteam.domain.usecase.GetServerUseCase
-import com.devflowteam.domain.usecase.InsertToDoUseCase
+import com.devflowteam.domain.usecase.UpsertToDoUseCase
 import com.devflowteam.todozap.di.appModule
 import com.devflowteam.todozap.di.dataModule
 import com.devflowteam.todozap.di.domainModule
@@ -31,6 +31,7 @@ import kotlin.test.assertNotNull
 
 @RunWith(JUnit4::class)
 class KoinModuleTest: KoinTest {
+
     private val moduleList = listOf(appModule, dataModule, domainModule)
 
     @Before
@@ -54,8 +55,8 @@ class KoinModuleTest: KoinTest {
 
     @Test
     fun `test InsertToDoUseCase injection`() {
-        val useCase: InsertToDoUseCase = get()
-        assertNotNull(useCase, "InsertToDoUseCase should not be null")
+        val useCase: UpsertToDoUseCase = get()
+        assertNotNull(useCase, "UpsertToDoUseCase should not be null")
     }
 
     @Test

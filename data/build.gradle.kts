@@ -39,10 +39,13 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
 
-    implementation("androidx.datastore:datastore-preferences:1.1.4")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation(libs.androidx.datastore.preferences)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
     // Room
     implementation(libs.androidx.room.runtime)
