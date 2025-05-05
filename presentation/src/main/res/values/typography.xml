@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.ToDoZap.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="lineHeight">36sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">32sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">29sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="lineHeight">27sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">23sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">19sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">19sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">17sp</item>
+    </style>
+
+    <style name="TextAppearance.ToDoZap.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">@color/on_light_beige</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="lineHeight">17sp</item>
+    </style>
+</resources>

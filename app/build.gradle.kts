@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
 
     alias(libs.plugins.ksp)
+    alias(libs.plugins.safeargs)
 }
 
 android {
@@ -37,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -44,6 +49,11 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":presentation"))
+    implementation(project(":feature_start"))
+    implementation(project(":feature_home"))
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     implementation(libs.androidx.room.ktx)
 
@@ -59,6 +69,8 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     testImplementation(libs.koin.test)
+    androidTestImplementation("io.insert-koin:koin-test:3.5.3") //chop
+    androidTestImplementation("io.insert-koin:koin-test-junit4:3.5.3") //chop
 
     implementation(libs.kotlinx.coroutines.test)
     coreLibraryDesugaring(libs.desugarJdkLibs)

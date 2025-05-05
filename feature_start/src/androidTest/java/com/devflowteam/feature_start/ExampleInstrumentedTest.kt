@@ -1,4 +1,4 @@
-package com.devflowteam.todozap
+package com.devflowteam.feature_start
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.devflowteam.todozap", appContext.packageName)
+        assertEquals("com.devflowteam.feature_start.test", appContext.packageName)
     }
 }

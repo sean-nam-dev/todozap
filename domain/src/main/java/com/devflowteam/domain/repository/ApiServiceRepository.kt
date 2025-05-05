@@ -6,9 +6,11 @@ import com.devflowteam.domain.model.ToDo
 
 interface ApiServiceRepository {
 
-    suspend fun getAllTasks(id: String): Result<List<ToDo>, DataError.Network>
-
     suspend fun addUser(id: String): Result<Unit, DataError.Network>
+
+    suspend fun checkUser(id: String): Result<Unit, DataError.Network>
+
+    suspend fun getAllTasks(id: String): Result<List<ToDo>, DataError.Network>
 
     suspend fun addTask(
         userId: String,

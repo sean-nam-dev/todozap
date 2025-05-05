@@ -14,16 +14,16 @@ class ApiServiceRepositoryImpl(
     private val apiService: ApiService
 ): ApiServiceRepository {
 
-    override suspend fun getAllTasks(id: String): Result<List<ToDo>, DataError.Network> {
+    override suspend fun addUser(id: String): Result<Unit, DataError.Network> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.getAllTasks(id)
+                val response = apiService.addUser(UserRequest(id))
 
                 if (response.isSuccessful) {
-                    val getTaskResponse = response.body()
+                    val codeResponse = response.body()
 
-                    when (getTaskResponse?.code) {
-                        0 -> Result.Success(getTaskResponse.tasks ?: emptyList())
+                    when (codeResponse?.code) {
+                        0 -> Result.Success(Unit)
                         else -> Result.Error(DataError.Network.EXTERNAL)
                     }
                 } else {
@@ -35,16 +35,37 @@ class ApiServiceRepositoryImpl(
         }
     }
 
-    override suspend fun addUser(id: String): Result<Unit, DataError.Network> {
+    override suspend fun checkUser(id: String): Result<Unit, DataError.Network> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = apiService.addUser(UserRequest(id))
+                val response = apiService.checkUser(id)
 
                 if (response.isSuccessful) {
                     val codeResponse = response.body()
 
                     when (codeResponse?.code) {
                         0 -> Result.Success(Unit)
+                        else -> Result.Error(DataError.Network.EXTERNAL)
+                    }
+                } else {
+                    throw Exception()
+                }
+            } catch (e: Exception) {
+                Result.Error(DataError.Network.UNKNOWN)
+            }
+        }
+    }
+
+    override suspend fun getAllTasks(id: String): Result<List<ToDo>, DataError.Network> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = apiService.getAllTasks(id)
+
+                if (response.isSuccessful) {
+                    val getTaskResponse = response.body()
+
+                    when (getTaskResponse?.code) {
+                        0 -> Result.Success(getTaskResponse.tasks ?: emptyList())
                         else -> Result.Error(DataError.Network.EXTERNAL)
                     }
                 } else {

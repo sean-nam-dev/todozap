@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/start_graph">
+
+    <include app:graph="@navigation/start_graph" />
+    <include app:graph="@navigation/home_graph" />
+
+    <!--    <fragment-->
+<!--        android:id="@+id/startFragment"-->
+<!--        android:name="com.devflowteam.feature_start.StartFragment"-->
+<!--        android:label="StartFragment" >-->
+<!--        <oneTimeEvents-->
+<!--            android:id="@+id/action_startFragment_to_homeFragment"-->
+<!--            app:destination="@id/homeFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/homeFragment"-->
+<!--        android:name="com.devflowteam.feature_home.ui.home.HomeFragment"-->
+<!--        android:label="HomeFragment" >-->
+<!--        <oneTimeEvents-->
+<!--            android:id="@+id/action_homeFragment_to_detailFragment"-->
+<!--            app:destination="@id/detailFragment"-->
+<!--            app:launchSingleTop="true" />-->
+<!--        <oneTimeEvents-->
+<!--            android:id="@+id/action_homeFragment_to_creationFragment"-->
+<!--            app:destination="@id/creationFragment"-->
+<!--            app:launchSingleTop="true" />-->
+<!--        <oneTimeEvents-->
+<!--            android:id="@+id/action_homeFragment_to_settingsFragment"-->
+<!--            app:destination="@id/settingsFragment"-->
+<!--            app:launchSingleTop="true" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/detailFragment"-->
+<!--        android:name="com.devflowteam.presentation.detail.DetailFragment"-->
+<!--        android:label="DetailFragment" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/creationFragment"-->
+<!--        android:name="com.devflowteam.presentation.creation.CreationFragment"-->
+<!--        android:label="CreationFragment" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/settingsFragment"-->
+<!--        android:name="com.devflowteam.presentation.settings.SettingsFragment"-->
+<!--        android:label="SettingsFragment" />-->
+</navigation>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="yellow">#EFF25F</color>
+    <color name="red">#b3261e</color>
+    <color name="blue">#4A39AB</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="beige">#E6D7B9</color> <!-- Main beige for FAB -->
+    <color name="on_beige">#3A2F1F</color> <!-- Dark gray for text/icons on beige -->
+    <color name="light_beige">#F5ECE1</color> <!-- Light beige for Top App Bar, Cards -->
+    <color name="on_light_beige">#4A4035</color> <!-- Dark gray for text/icons on light beige -->
+
+    <color name="gold">#D4A017</color> <!-- Deep gold for active icons, accents -->
+    <color name="on_gold">#1F1A0D</color> <!-- Near-black for text/icons on gold -->
+    <color name="light_gold">#F9E4B7</color> <!-- Light gold for backgrounds -->
+    <color name="on_light_gold">#4A4035</color> <!-- Dark gray for text/icons on light gold -->
+
+    <color name="dark_green">#2E4A3D</color> <!-- Dark green for tags, accents -->
+    <color name="on_dark_green">#FFFFFF</color> <!-- White for text/icons on dark green -->
+    <color name="light_green">#C2D1C8</color> <!-- Light greenish-gray for backgrounds -->
+    <color name="on_light_green">#4A4035</color> <!-- Dark gray for text/icons on light green -->
+
+    <color name="warm_white">#FDF8F1</color> <!-- Warm white for Bottom Navigation Bar -->
+    <color name="on_warm_white">#4A4035</color> <!-- Dark gray for text/icons on warm white -->
+    <color name="very_light_beige">#FAF4EC</color> <!-- Very light beige for app background -->
+    <color name="on_very_light_beige">#4A4035</color> <!-- Dark gray for text/icons on very light beige -->
+
+    <color name="burgundy">#A83232</color> <!-- Soft burgundy for errors -->
+    <color name="on_burgundy">#FFFFFF</color> <!-- White for text/icons on burgundy -->
+    <color name="light_pink">#F4D8D8</color> <!-- Light pink for error backgrounds -->
+    <color name="on_light_pink">#4A4035</color> <!-- Dark gray for text/icons on light pink -->
+
+    <color name="medium_gray">#8A7A6B</color> <!-- Medium gray for borders, inactive icons -->
+</resources>

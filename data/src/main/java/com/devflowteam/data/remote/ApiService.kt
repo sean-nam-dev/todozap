@@ -12,11 +12,14 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("get_all_tasks.php")
-    suspend fun getAllTasks(@Query("user_id") userId: String) : Response<GetTasksResponse>
-
     @POST("add_user.php")
     suspend fun addUser(@Body request: UserRequest) : Response<CodeResponse>
+
+    @GET("check_user.php")
+    suspend fun checkUser(@Query("user_id") userId: String) : Response<CodeResponse>
+
+    @GET("get_all_tasks.php")
+    suspend fun getAllTasks(@Query("user_id") userId: String) : Response<GetTasksResponse>
 
     @POST("add_task.php")
     suspend fun addTask(@Body request: TaskRequestSerialized) : Response<CodeResponse>

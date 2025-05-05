@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ToDoZap" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@values/my_light_primary</item> -->
+        <item name="colorPrimary">@color/beige</item>
+        <item name="colorOnPrimary">@color/on_beige</item>
+        <item name="colorPrimaryContainer">@color/light_beige</item>
+        <item name="colorOnPrimaryContainer">@color/on_light_beige</item>
+        <item name="colorSecondary">@color/gold</item>
+        <item name="colorOnSecondary">@color/on_gold</item>
+        <item name="colorSecondaryContainer">@color/light_gold</item>
+        <item name="colorOnSecondaryContainer">@color/on_light_gold</item>
+        <item name="colorTertiary">@color/dark_green</item>
+        <item name="colorOnTertiary">@color/on_dark_green</item>
+        <item name="colorTertiaryContainer">@color/light_green</item>
+        <item name="colorOnTertiaryContainer">@color/on_light_green</item>
+        <item name="colorSurface">@color/warm_white</item>
+        <item name="colorOnSurface">@color/on_warm_white</item>
+        <item name="background">@color/very_light_beige</item>
+        <item name="colorOnBackground">@color/on_very_light_beige</item>
+        <item name="colorError">@color/burgundy</item>
+        <item name="colorOnError">@color/on_burgundy</item>
+        <item name="colorErrorContainer">@color/light_pink</item>
+        <item name="colorOnErrorContainer">@color/on_light_pink</item>
+        <item name="colorOutline">@color/medium_gray</item>
+    </style>
+
+    <style name="Theme.ToDoZap" parent="Base.Theme.ToDoZap" />
+</resources>

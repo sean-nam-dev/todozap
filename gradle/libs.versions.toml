@@ -20,6 +20,11 @@ retrofit = "2.9.0"
 room = "2.6.1"
 desugarJdkLibs = "2.1.5"
 truth = "1.1.5"
+lifecycleRuntimeAndroid = "2.8.7"
+navigationRuntimeKtx = "2.8.9"
+navigationRuntimeAndroid = "2.9.0-rc01"
+navigationFragmentKtx = "2.8.9"
+safeargs = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,11 +53,16 @@ mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
+androidx-lifecycle-runtime-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-android", version.ref = "lifecycleRuntimeAndroid" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeargs" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 

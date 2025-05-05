@@ -1,0 +1,128 @@
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Base.Theme.ToDoZap" parent="Theme.Material3.Light.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@values/my_light_primary</item> &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/beige</item>-->
+<!--        <item name="colorOnPrimary">@color/on_beige</item>-->
+<!--        <item name="colorPrimaryContainer">@color/light_beige</item>-->
+<!--        <item name="colorOnPrimaryContainer">@color/on_light_beige</item>-->
+<!--        <item name="colorSecondary">@color/gold</item>-->
+<!--        <item name="colorOnSecondary">@color/on_gold</item>-->
+<!--        <item name="colorSecondaryContainer">@color/light_gold</item>-->
+<!--        <item name="colorOnSecondaryContainer">@color/on_light_gold</item>-->
+<!--        <item name="colorTertiary">@color/dark_green</item>-->
+<!--        <item name="colorOnTertiary">@color/on_dark_green</item>-->
+<!--        <item name="colorTertiaryContainer">@color/light_green</item>-->
+<!--        <item name="colorOnTertiaryContainer">@color/on_light_green</item>-->
+<!--        <item name="colorSurface">@color/warm_white</item>-->
+<!--        <item name="colorOnSurface">@color/on_warm_white</item>-->
+<!--        <item name="background">@color/very_light_beige</item>-->
+<!--        <item name="colorOnBackground">@color/on_very_light_beige</item>-->
+<!--        <item name="colorError">@color/burgundy</item>-->
+<!--        <item name="colorOnError">@color/on_burgundy</item>-->
+<!--        <item name="colorErrorContainer">@color/light_pink</item>-->
+<!--        <item name="colorOnErrorContainer">@color/on_light_pink</item>-->
+<!--        <item name="colorOutline">@color/medium_gray</item>-->
+
+<!--        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.ToDoZap.HeadlineSmall</item>-->
+<!--        <item name="textAppearanceTitleLarge">@style/TextAppearance.ToDoZap.TitleLarge</item>-->
+<!--        <item name="textAppearanceBodyLarge">@style/TextAppearance.ToDoZap.BodyLarge</item>-->
+<!--        <item name="textAppearanceBodyMedium">@style/TextAppearance.ToDoZap.BodyMedium</item>-->
+<!--        <item name="textAppearanceBodySmall">@style/TextAppearance.ToDoZap.BodySmall</item>-->
+<!--        <item name="textAppearanceLabelLarge">@style/TextAppearance.ToDoZap.LabelLarge</item>-->
+<!--        <item name="textAppearanceLabelMedium">@style/TextAppearance.ToDoZap.LabelMedium</item>-->
+<!--        <item name="textAppearanceLabelSmall">@style/TextAppearance.ToDoZap.LabelSmall</item>-->
+<!--    </style>-->
+
+<!--    <style name="LightDialogTheme" parent="Theme.Material3.Light.Dialog.Alert">-->
+<!--        <item name="backgroundTint">@color/light_beige</item>-->
+<!--        <item name="titleTextColor">@color/on_beige</item>-->
+<!--        <item name="buttonBarPositiveButtonStyle">@style/LightDialogPositiveButtonStyle</item>-->
+<!--        <item name="buttonBarNegativeButtonStyle">@style/LightDialogNegativeButtonStyle</item>-->
+<!--        <item name="cornerFamily">cut</item>-->
+<!--        <item name="cornerSize">18dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="LightDialogPositiveButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">-->
+<!--        <item name="android:textColor">@color/gold</item> -->
+<!--    </style>-->
+
+<!--    <style name="LightDialogNegativeButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">-->
+<!--        <item name="android:textColor">@color/on_beige</item>-->
+<!--    </style>-->
+
+<!--    <style name="Theme.ToDoZap" parent="Base.Theme.ToDoZap" />-->
+<!--</resources>-->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Base.Theme.ToDoZap" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/beige</item>
+        <item name="colorOnPrimary">@color/on_beige</item>
+        <item name="colorPrimaryContainer">@color/light_beige</item>
+        <item name="colorOnPrimaryContainer">@color/on_light_beige</item>
+        <item name="colorSecondary">@color/gold</item>
+        <item name="colorOnSecondary">@color/on_gold</item>
+        <item name="colorSecondaryContainer">@color/light_gold</item>
+        <item name="colorOnSecondaryContainer">@color/on_light_gold</item>
+        <item name="colorTertiary">@color/dark_green</item>
+        <item name="colorOnTertiary">@color/on_dark_green</item>
+        <item name="colorTertiaryContainer">@color/light_green</item>
+        <item name="colorOnTertiaryContainer">@color/on_light_green</item>
+        <item name="colorSurface">@color/warm_white</item>
+        <item name="colorOnSurface">@color/on_warm_white</item>
+        <item name="android:background">@color/very_light_beige</item>
+        <item name="colorOnBackground">@color/on_very_light_beige</item>
+        <item name="colorError">@color/burgundy</item>
+        <item name="colorOnError">@color/on_burgundy</item>
+        <item name="colorErrorContainer">@color/light_pink</item>
+        <item name="colorOnErrorContainer">@color/on_light_pink</item>
+        <item name="colorOutline">@color/medium_gray</item>
+
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.ToDoZap.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.ToDoZap.TitleLarge</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.ToDoZap.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.ToDoZap.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.ToDoZap.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.ToDoZap.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.ToDoZap.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.ToDoZap.LabelSmall</item>
+    </style>
+
+    <style name="Theme.ToDoZap" parent="Base.Theme.ToDoZap" />
+
+    <!-- Стиль диалога -->
+    <style name="LightDialogTheme" parent="Theme.Material3.Light.Dialog.Alert">
+        <item name="android:backgroundTint">@color/light_beige</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TextAppearance.ToDoZap.DialogTitle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/LightDialogPositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/LightDialogNegativeButtonStyle</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.ToDoZap.Dialog</item>
+        <item name="dialogCornerRadius">18dp</item> <!-- Запасной вариант -->
+    </style>
+
+    <!-- Стиль заголовка диалога -->
+    <style name="TextAppearance.ToDoZap.DialogTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/on_beige</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontWeight">700</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Стиль формы диалога -->
+    <style name="ShapeAppearanceOverlay.ToDoZap.Dialog" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
+    <!-- Стиль положительной кнопки -->
+    <style name="LightDialogPositiveButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/gold</item>
+    </style>
+
+    <!-- Стиль отрицательной кнопки -->
+    <style name="LightDialogNegativeButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/on_beige</item>
+    </style>
+</resources>

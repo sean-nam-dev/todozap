@@ -11,10 +11,14 @@ import com.devflowteam.data.repository.ApiServiceRepositoryImpl
 import com.devflowteam.data.repository.SettingsRepositoryImpl
 import com.devflowteam.data.repository.ToDoRepositoryImpl
 import com.devflowteam.data.repository.ToDoSyncActionRepositoryImpl
+import com.devflowteam.data.repository.WebsiteNavigatorRepositoryImpl
 import com.devflowteam.domain.repository.ApiServiceRepository
 import com.devflowteam.domain.repository.SettingsRepository
 import com.devflowteam.domain.repository.ToDoRepository
 import com.devflowteam.domain.repository.ToDoSyncActionRepository
+import com.devflowteam.domain.repository.WebsiteNavigatorRepository
+import com.devflowteam.presentation.utils.ContextResourceManager
+import com.devflowteam.presentation.utils.ResourceManager
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -30,8 +34,6 @@ val dataModule = module {
     single<OkHttpClient> {
         OkHttpClient.Builder()
             .connectTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val originalRequest = chain.request()
                 val originalUrl = originalRequest.url
@@ -135,5 +137,13 @@ val dataModule = module {
 
     single<ApiServiceRepository> {
         ApiServiceRepositoryImpl(apiService = get())
+    }
+
+    single<WebsiteNavigatorRepository> {
+        WebsiteNavigatorRepositoryImpl(context = get())
+    }
+
+    single<ResourceManager> {
+        ContextResourceManager(appContext = get())
     }
 }
