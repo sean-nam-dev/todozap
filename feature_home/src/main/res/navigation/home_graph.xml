@@ -11,9 +11,13 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
 
-<!--        <action-->
-<!--            android:id="@+id/from_feature_home_to_feature_settings"-->
-<!--            app:launchSingleTop="true"-->
-<!--            app:destination="@+id/settings_graph"/>-->
+        <action
+            android:id="@+id/from_feature_home_to_feature_server"
+            app:destination="@+id/server_graph" />
+
+        <action
+            android:id="@+id/from_feature_home_to_feature_language"
+            app:destination="@+id/language_graph" />
+
     </fragment>
 </navigation>

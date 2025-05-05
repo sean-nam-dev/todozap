@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/server_graph"
+    app:startDestination="@id/serverFragment">
+
+    <fragment
+        android:id="@+id/serverFragment"
+        android:name="com.devflowteam.feature_server.ServerFragment"
+        android:label="fragment_server"
+        tools:layout="@layout/fragment_server">
+
+        <!--        <action-->
+        <!--            android:id="@+id/from_feature_home_to_feature_settings"-->
+        <!--            app:launchSingleTop="true"-->
+        <!--            app:destination="@+id/settings_graph"/>-->
+    </fragment>
+</navigation>

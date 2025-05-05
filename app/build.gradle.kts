@@ -51,6 +51,8 @@ dependencies {
     implementation(project(":presentation"))
     implementation(project(":feature_start"))
     implementation(project(":feature_home"))
+    implementation(project(":feature_language"))
+    implementation(project(":feature_server"))
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")

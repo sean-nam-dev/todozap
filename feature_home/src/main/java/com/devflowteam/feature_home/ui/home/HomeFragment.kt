@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.devflowteam.feature_home.R
 import com.devflowteam.feature_home.databinding.FragmentHomeBinding
 import com.devflowteam.feature_home.utils.HomeTabsAdapter
 import com.google.android.material.tabs.TabLayoutMediator
