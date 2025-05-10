@@ -23,8 +23,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val adapter = HomeTabsAdapter(this)
-        binding.viewPager.adapter = adapter
+        val tabAdapter = HomeTabsAdapter(this)
+
+        binding.viewPager.adapter = tabAdapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
@@ -34,5 +35,7 @@ class HomeFragment : Fragment() {
                 else -> ""
             }
         }.attach()
+
+        binding.viewPager.setCurrentItem(1, false)
     }
 }

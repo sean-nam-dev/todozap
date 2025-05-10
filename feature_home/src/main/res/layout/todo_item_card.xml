@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="150dp"
+    android:maxHeight="220dp"
+    android:background="?attr/colorPrimary"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textAppearance="@style/TextAppearance.ToDoZap.BodyMedium"
+            android:background="?attr/colorPrimary"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Tue, 17 Jun" />
+
+        <TextView
+            android:id="@+id/text"
+            android:textAppearance="@style/TextAppearance.ToDoZap.BodySmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:maxHeight="197dp"
+            android:ellipsize="end"
+            android:text="Some text" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

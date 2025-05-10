@@ -48,6 +48,7 @@
         app:srcCompat="@drawable/ic_round_add"
         app:tint="?attr/colorOnPrimary"
         app:layout_anchor="@id/bottomAppBar"
+        app:maxImageSize="35dp"
         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

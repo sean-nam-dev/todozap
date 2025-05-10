@@ -93,9 +93,21 @@ class MainActivity : AppCompatActivity(), KoinComponent {
                     binding.bottomAppBar.visibility = View.GONE
                     binding.fab.visibility = View.GONE
                 }
-                com.devflowteam.feature_home.R.id.homeFragment,
-                com.devflowteam.feature_server.R.id.serverFragment,
-                com.devflowteam.feature_language.R.id.languageFragment ->  {
+                com.devflowteam.feature_server.R.id.serverFragment -> {
+                    binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
+
+                    binding.topAppBar.visibility = View.GONE
+                    binding.bottomAppBar.visibility = View.VISIBLE
+                    binding.fab.visibility = View.VISIBLE
+                }
+                com.devflowteam.feature_language.R.id.languageFragment -> {
+                    binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
+
+                    binding.topAppBar.visibility = View.GONE
+                    binding.bottomAppBar.visibility = View.VISIBLE
+                    binding.fab.visibility = View.VISIBLE
+                }
+                com.devflowteam.feature_home.R.id.homeFragment ->  {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.colorPrimaryContainer))
 
                     binding.topAppBar.visibility = View.GONE

@@ -5,16 +5,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.devflowteam.feature_home.R
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.devflowteam.feature_home.databinding.FragmentPendingBinding
+import com.devflowteam.feature_home.utils.StaggeredAdapter
+import com.devflowteam.feature_home.utils.StaggeredGridSpacingItemDecoration
+import com.devflowteam.feature_home.utils.Temp
 
 class PendingFragment: Fragment() {
+
+    private lateinit var binding: FragmentPendingBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentPendingBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-
-        return inflater.inflate(R.layout.fragment_pending, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.recyclerView.apply {
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            adapter = StaggeredAdapter(Temp.getItems()) {
+                TODO()
+            }
+            addItemDecoration(
+                StaggeredGridSpacingItemDecoration(
+                    spanCount = 2,
+                    spacingDp = 15F,
+                    includeEdge = true,
+                    context = requireContext()
+                )
+            )
+            setPadding(0, 0, 0, 40)
+        }
     }
 }

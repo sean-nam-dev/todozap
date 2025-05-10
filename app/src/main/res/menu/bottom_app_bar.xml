@@ -6,19 +6,19 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_round_home"
         android:title="@string/home"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/languageFragment"
         android:icon="@drawable/ic_round_language"
         android:title="@string/language"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/serverFragment"
         android:icon="@drawable/ic_round_server"
         android:title="@string/server"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/id"
