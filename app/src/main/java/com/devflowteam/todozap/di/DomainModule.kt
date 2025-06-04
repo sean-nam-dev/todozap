@@ -4,7 +4,9 @@ import com.devflowteam.domain.usecase.AddToDoUseCase
 import com.devflowteam.domain.usecase.AddUserUseCase
 import com.devflowteam.domain.usecase.ChangeDarkModeUseCase
 import com.devflowteam.domain.usecase.ChangeFirstLaunchUseCase
+import com.devflowteam.domain.usecase.ChangeHardSyncUseCase
 import com.devflowteam.domain.usecase.ChangeIDUseCase
+import com.devflowteam.domain.usecase.ChangeLanguageUseCase
 import com.devflowteam.domain.usecase.ChangeServerUseCase
 import com.devflowteam.domain.usecase.CheckUserUseCase
 import com.devflowteam.domain.usecase.DeleteTaskUseCase
@@ -16,11 +18,14 @@ import com.devflowteam.domain.usecase.GetAllToDoUseCase
 import com.devflowteam.domain.usecase.GetDarkModeUseCase
 import com.devflowteam.domain.usecase.GetFirstLaunchUseCase
 import com.devflowteam.domain.usecase.GetIDUseCase
+import com.devflowteam.domain.usecase.GetLanguageUseCase
 import com.devflowteam.domain.usecase.GetServerUseCase
 import com.devflowteam.domain.usecase.OpenWebsiteUseCase
-import com.devflowteam.domain.usecase.UpsertToDoUseCase
+import com.devflowteam.domain.usecase.SearchToDoUseCase
 import com.devflowteam.domain.usecase.UpdateTaskUseCase
+import com.devflowteam.domain.usecase.UpsertTaskUseCase
 import com.devflowteam.domain.usecase.UpsertToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.UpsertToDoUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -116,6 +121,32 @@ val domainModule = module {
     factory {
         OpenWebsiteUseCase(
             websiteNavigatorRepository = get()
+        )
+    }
+    factory {
+        SearchToDoUseCase(
+            toDoRepository = get()
+        )
+    }
+    factory {
+        UpsertTaskUseCase(
+            getIDUseCase = get(),
+            apiServiceRepository = get()
+        )
+    }
+    factory {
+        ChangeHardSyncUseCase(
+            settingsRepository = get()
+        )
+    }
+    factory {
+        GetLanguageUseCase(
+            settingsRepository = get()
+        )
+    }
+    factory {
+        ChangeLanguageUseCase(
+            settingsRepository = get()
         )
     }
 }

@@ -5,16 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.devflowteam.core.utils.TimeFormatManager
 import com.devflowteam.domain.model.ToDo
 import com.devflowteam.feature_home.R
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class StaggeredAdapter(
     private val items: List<ToDo>,
     private val onItemClickAction: (Int) -> Unit
-) :
-    RecyclerView.Adapter<StaggeredAdapter.StaggeredViewHolder>() {
+) : RecyclerView.Adapter<StaggeredAdapter.StaggeredViewHolder>() {
 
     class StaggeredViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewDate: TextView = itemView.findViewById(R.id.date)
@@ -30,10 +28,10 @@ class StaggeredAdapter(
     override fun onBindViewHolder(holder: StaggeredViewHolder, position: Int) {
         val currentItem = items[position]
 
-        val date = inputFormat.parse(currentItem.date)
-        val formatted = outputFormat.format(date!!)
-
-        holder.textViewDate.text = formatted
+        holder.textViewDate.text = TimeFormatManager.transform(
+            currentItem.date,
+            TimeFormatManager.Format.WeekDayMonthFormat
+        )
         holder.textViewText.text = currentItem.text
         holder.itemView.setOnClickListener {
             onItemClickAction(currentItem.id)
@@ -41,9 +39,4 @@ class StaggeredAdapter(
     }
 
     override fun getItemCount() = items.size
-
-    companion object {
-        val inputFormat = SimpleDateFormat("yyyy-dd-MM", Locale.getDefault())
-        val outputFormat = SimpleDateFormat("EEE, dd MMM", Locale.getDefault())
-    }
 }

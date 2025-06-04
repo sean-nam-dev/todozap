@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.devflowteam.feature_home.ui.detail.DetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/background"
+            app:title="16.03.2025"
+            app:titleTextAppearance="@style/TextAppearance.ToDoZap.TitleMedium"
+            app:titleCentered="true"
+            app:menu="@menu/top_app_bar_menu"
+            app:navigationIcon="@drawable/ic_round_arrow_back_2"
+            app:navigationIconTint="?attr/colorOnPrimary"
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:textAppearance="@style/TextAppearance.ToDoZap.TitleLarge" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+                android:textAppearance="@style/TextAppearance.ToDoZap.BodyMedium" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="100dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="20dp">
+
+        <com.example.swipebutton_library.SwipeButton
+            android:id="@+id/swipeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:outer_background_height="45dp"
+            app:outer_background_tint="?attr/colorPrimary"
+            app:trail_background_tint="?attr/colorSecondary"
+            app:button_background_drawable="@drawable/rounded_shape"
+            app:outer_background_drawable="@drawable/rounded_shape"
+            app:inner_text="Complete"
+            app:inner_text_size="24sp"
+            app:inner_text_color="?attr/colorSecondary"
+            app:button_background_tint="?attr/colorSecondary"
+            app:button_height="55dp"
+            app:button_width="55dp"
+            app:button_background_padding="12dp"/>
+    </LinearLayout>
+
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_margin="20dp">-->
+
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/swipeButton"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/title"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:text="Title"-->
+<!--                    android:textAppearance="@style/TextAppearance.ToDoZap.TitleLarge" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/text"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Some text"-->
+<!--                    android:textAppearance="@style/TextAppearance.ToDoZap.BodyMedium" />-->
+<!--            </LinearLayout>-->
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+<!--        <com.example.swipebutton_library.SwipeButton-->
+<!--            android:id="@+id/swipeButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:outer_background_height="45dp"-->
+<!--            app:outer_background_tint="?attr/colorPrimary"-->
+<!--            app:trail_background_tint="?attr/colorOutline"-->
+<!--            app:button_background_drawable="@drawable/rounded_shape"-->
+<!--            app:outer_background_drawable="@drawable/rounded_shape"-->
+<!--            app:inner_text="Complete"-->
+<!--            app:inner_text_size="24sp"-->
+<!--            app:inner_text_color="?attr/colorSecondary"-->
+<!--            app:button_background_tint="?attr/colorSecondary"-->
+<!--            app:button_height="55dp"-->
+<!--            app:button_width="55dp"-->
+<!--            app:button_background_padding="12dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

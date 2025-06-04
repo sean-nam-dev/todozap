@@ -9,6 +9,7 @@ import com.devflowteam.domain.model.ToDo
 import com.devflowteam.domain.repository.ApiServiceRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.UUID
 
 class ApiServiceRepositoryImpl(
     private val apiService: ApiService
@@ -36,6 +37,10 @@ class ApiServiceRepositoryImpl(
     }
 
     override suspend fun checkUser(id: String): Result<Unit, DataError.Network> {
+        if (!isValidUUID(id)) {
+            return Result.Error(DataError.Network.UNKNOWN)
+        }
+
         return withContext(Dispatchers.IO) {
             try {
                 val response = apiService.checkUser(id)
@@ -50,6 +55,7 @@ class ApiServiceRepositoryImpl(
                 } else {
                     throw Exception()
                 }
+
             } catch (e: Exception) {
                 Result.Error(DataError.Network.UNKNOWN)
             }
@@ -170,6 +176,15 @@ class ApiServiceRepositoryImpl(
             } catch (e: Exception) {
                 Result.Error(DataError.Network.UNKNOWN)
             }
+        }
+    }
+
+    private fun isValidUUID(id: String): Boolean {
+        return try {
+            UUID.fromString(id)
+            true
+        } catch (e: Exception) {
+            false
         }
     }
 }

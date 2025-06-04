@@ -19,5 +19,39 @@
             android:id="@+id/from_feature_home_to_feature_language"
             app:destination="@+id/language_graph" />
 
+
+        <action
+            android:id="@+id/from_feature_home_to_feature_detail"
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/homeFragment"
+            app:launchSingleTop="true">
+
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="-1" />
+
+            <argument
+                android:name="isPending"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.devflowteam.feature_home.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+
+        <argument
+            android:name="isPending"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
 </navigation>

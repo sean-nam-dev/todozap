@@ -13,9 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
+import com.devflowteam.data.remote.SyncManager
+import com.devflowteam.domain.usecase.ChangeLanguageUseCase
 import com.devflowteam.domain.usecase.GetFirstLaunchUseCase
+import com.devflowteam.presentation.utils.getThemeColor
 import com.devflowteam.todozap.databinding.ActivityMainBinding
-import com.devflowteam.todozap.utils.getThemeColor
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
@@ -26,7 +28,9 @@ class MainActivity : AppCompatActivity(), KoinComponent {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private val changeLanguageUseCase: ChangeLanguageUseCase by inject()
     private val firstLaunchUseCase: GetFirstLaunchUseCase by inject()
+    private val syncManager: SyncManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +60,8 @@ class MainActivity : AppCompatActivity(), KoinComponent {
 
         lifecycleScope.launch {
             setupGraph()
+            setupLanguage()
+            syncManager.start()
         }
 
         binding.bottomAppBar.apply {
@@ -89,35 +95,52 @@ class MainActivity : AppCompatActivity(), KoinComponent {
                 com.devflowteam.feature_start.R.id.startFragment -> {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
 
-                    binding.topAppBar.visibility = View.GONE
                     binding.bottomAppBar.visibility = View.GONE
                     binding.fab.visibility = View.GONE
                 }
                 com.devflowteam.feature_server.R.id.serverFragment -> {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
 
-                    binding.topAppBar.visibility = View.GONE
                     binding.bottomAppBar.visibility = View.VISIBLE
                     binding.fab.visibility = View.VISIBLE
                 }
                 com.devflowteam.feature_language.R.id.languageFragment -> {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
 
-                    binding.topAppBar.visibility = View.GONE
                     binding.bottomAppBar.visibility = View.VISIBLE
                     binding.fab.visibility = View.VISIBLE
                 }
                 com.devflowteam.feature_home.R.id.homeFragment ->  {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.colorPrimaryContainer))
 
-                    binding.topAppBar.visibility = View.GONE
                     binding.bottomAppBar.visibility = View.VISIBLE
                     binding.fab.visibility = View.VISIBLE
+                }
+                com.devflowteam.feature_home.R.id.detailFragment -> {
+                    binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
+
+                    binding.bottomAppBar.visibility = View.GONE
+                    binding.fab.visibility = View.GONE
                 }
 //                R.id.detailFragment, R.id.creationFragment -> {
 //                    binding.bottomAppBar.visibility = View.GONE
 //                    binding.fab.visibility = View.GONE
 //                }
+            }
+        }
+    }
+
+    private fun setupLanguage() {
+        lifecycleScope.launch {
+            if (firstLaunchUseCase().first()) {
+                val currentLocale = resources.configuration.locale
+                val languageCodeList = resources.getStringArray(com.devflowteam.presentation.R.array.language_codes)
+
+                languageCodeList.forEach { language ->
+                    if (language != "en" && language == currentLocale.language) {
+                        changeLanguageUseCase(language)
+                    }
+                }
             }
         }
     }

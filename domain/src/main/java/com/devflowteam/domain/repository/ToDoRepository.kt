@@ -11,5 +11,7 @@ interface ToDoRepository {
 
     suspend fun delete(toDo: ToDo): Result<Unit, DataError.Local>
 
+    suspend fun search(toDoId: Int): Result<ToDo, DataError.Local>
+
     fun getAll(): Result<Flow<List<ToDo>>, DataError.Local>
 }

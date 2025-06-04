@@ -55,6 +55,22 @@ class ToDoRepositoryImpl(
         }
     }
 
+    override suspend fun search(toDoId: Int): Result<ToDo, DataError.Local> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val result = toDoDao.search(toDoId)
+
+                if (result != null) {
+                    Result.Success(result.toDomain())
+                } else {
+                    throw IllegalStateException("ToDoRepositoryImpl - search (result is null)")
+                }
+            } catch (e: Exception) {
+                Result.Error(DataError.Local.UNKNOWN)
+            }
+        }
+    }
+
     override fun getAll(): Result<Flow<List<ToDo>>, DataError.Local> {
         return try {
             Result.Success(toDoDao.getAll().map { list -> list.map { it.toDomain() } })

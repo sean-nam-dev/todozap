@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDoZap</string>
+    <string name="app_name" translatable="false">ToDoZap</string>
 
     <string name="welcome_to_todozap">Welcome to ToDoZap!</string>
     <string name="hello_blank_fragment">Asd</string>
@@ -21,4 +21,10 @@
     <string name="overdue">Overdue</string>
     <string name="pending">Pending</string>
     <string name="complete">Complete</string>
+    <string name="delete">Delete</string>
+    <string name="language">Language</string>
+    <string name="server">Server</string>
+    <string name="copy_id">Copy id</string>
+    <string name="contact_us">Contact us</string>
+    <string name="server_connection_error">Server connection error</string>
 </resources>

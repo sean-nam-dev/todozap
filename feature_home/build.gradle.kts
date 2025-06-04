@@ -42,12 +42,15 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
+    implementation("com.github.mhdmoh:swipe-button:1.0.3")
+
     implementation("io.insert-koin:koin-android:3.5.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(project(":data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

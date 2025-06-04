@@ -7,6 +7,8 @@ import com.devflowteam.data.local.todo.ToDoDatabase
 import com.devflowteam.data.local.todosyncaction.ToDoSyncActionDao
 import com.devflowteam.data.local.todosyncaction.ToDoSyncActionDatabase
 import com.devflowteam.data.remote.ApiService
+import com.devflowteam.data.remote.NetworkMonitor
+import com.devflowteam.data.remote.SyncManager
 import com.devflowteam.data.repository.ApiServiceRepositoryImpl
 import com.devflowteam.data.repository.SettingsRepositoryImpl
 import com.devflowteam.data.repository.ToDoRepositoryImpl
@@ -115,6 +117,22 @@ val dataModule = module {
     single<ToDoSyncActionDao> {
         val db: ToDoSyncActionDatabase = get()
         db.dao
+    }
+
+    single<NetworkMonitor> {
+        NetworkMonitor(context = get())
+    }
+
+    single<SyncManager> {
+        SyncManager(
+            networkMonitor = get(),
+            getAllToDoSyncActionUseCase = get(),
+            upsertTaskUseCase = get(),
+            searchToDoUseCase = get(),
+            deleteTaskUseCase = get(),
+            deleteToDoSyncActionUseCase = get(),
+            changeHardSyncUseCase = get()
+        )
     }
 
     single<ToDoRepository> {

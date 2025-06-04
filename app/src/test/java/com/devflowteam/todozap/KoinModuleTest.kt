@@ -1,14 +1,11 @@
 package com.devflowteam.todozap
 
 import android.content.Context
-import com.devflowteam.core.common.Result
-import com.devflowteam.domain.repository.ApiServiceRepository
 import com.devflowteam.domain.repository.ToDoRepository
 import com.devflowteam.domain.usecase.ChangeDarkModeUseCase
 import com.devflowteam.domain.usecase.ChangeFirstLaunchUseCase
 import com.devflowteam.domain.usecase.ChangeIDUseCase
 import com.devflowteam.domain.usecase.ChangeServerUseCase
-import com.devflowteam.domain.usecase.CheckUserUseCase
 import com.devflowteam.domain.usecase.DeleteToDoUseCase
 import com.devflowteam.domain.usecase.GetAllToDoUseCase
 import com.devflowteam.domain.usecase.GetDarkModeUseCase
@@ -19,7 +16,6 @@ import com.devflowteam.domain.usecase.UpsertToDoUseCase
 import com.devflowteam.todozap.di.appModule
 import com.devflowteam.todozap.di.dataModule
 import com.devflowteam.todozap.di.domainModule
-import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -32,7 +28,6 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import org.mockito.Mockito.mock
 import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 
 @RunWith(JUnit4::class)
 class KoinModuleTest: KoinTest {

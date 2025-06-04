@@ -15,6 +15,9 @@ interface ToDoDao {
     @Delete
     suspend fun delete(toDoEntity: ToDoEntity)
 
+    @Query("SELECT * FROM ToDoEntity WHERE id = :todoId LIMIT 1")
+    fun search(todoId: Int): ToDoEntity?
+
     @Query("SELECT * FROM ToDoEntity ORDER BY id ASC")
     fun getAll(): Flow<List<ToDoEntity>>
 }

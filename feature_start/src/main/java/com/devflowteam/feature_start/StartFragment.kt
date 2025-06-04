@@ -16,13 +16,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.devflowteam.domain.model.Status
+import com.devflowteam.domain.model.ToDo
+import com.devflowteam.domain.usecase.UpsertToDoUseCase
 import com.devflowteam.feature_start.databinding.FragmentStartBinding
 import com.devflowteam.presentation.utils.getThemeColor
 import com.devflowteam.presentation.utils.openWebsite
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.inject
 
 class StartFragment : Fragment(R.layout.fragment_start) {
 
@@ -37,14 +42,17 @@ class StartFragment : Fragment(R.layout.fragment_start) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         applyColors()
         initDialog()
         applyListeners()
         observeEvents()
         observeStates()
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -143,6 +151,13 @@ class StartFragment : Fragment(R.layout.fragment_start) {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
+                            StartViewModel.Events.ShowToastNoServerConnection -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    getString(com.devflowteam.presentation.R.string.server_connection_error),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                     }
             }
@@ -160,6 +175,9 @@ class StartFragment : Fragment(R.layout.fragment_start) {
                     binding.buttonSeeInstructions.apply {
                         visibility = if (state.isLinkInputVisible) View.VISIBLE else View.GONE
                         isEnabled = state.isLinkInputVisible
+                    }
+                    binding.progressBar.apply {
+                        visibility = if (state.isLoading) View.VISIBLE else View.GONE
                     }
                 }
             }

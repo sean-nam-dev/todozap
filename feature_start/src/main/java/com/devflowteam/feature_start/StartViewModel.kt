@@ -14,14 +14,15 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.devflowteam.core.common.Result
-import java.util.UUID
+import com.devflowteam.domain.usecase.AddUserUseCase
 
 class StartViewModel(
     private val openWebsiteUseCase: OpenWebsiteUseCase,
     private val checkUserUseCase: CheckUserUseCase,
     private val changeServerUseCase: ChangeServerUseCase,
     private val changeIDUseCase: ChangeIDUseCase,
-    private val isFirstLaunchUseCase: ChangeFirstLaunchUseCase
+    private val isFirstLaunchUseCase: ChangeFirstLaunchUseCase,
+    private val addUserUseCase: AddUserUseCase
 ): ViewModel() {
 
     private val _state = MutableStateFlow(StartUIState())
@@ -37,28 +38,36 @@ class StartViewModel(
             }
             is StartUIAction.FinishClickAction -> {
                 viewModelScope.launch {
-                    changeServerUseCase(state.value.serverLink)
-                    changeIDUseCase(state.value.id)
+                    if (!_state.value.isLoading) {
+                        changeServerUseCase(state.value.serverLink)
+                        changeIDUseCase(state.value.id)
 
-                    isFirstLaunchUseCase(false)
+                        _state.update { it.copy(isLoading = true) }
 
-                    _oneTimeEvents.emit(Events.NavigateToHome)
+                        when (addUserUseCase()) {
+                            is Result.Error -> {
+                                _oneTimeEvents.emit(Events.ShowToastNoServerConnection)
+                            }
+                            is Result.Success -> {
+                                isFirstLaunchUseCase(false)
+                                _oneTimeEvents.emit(Events.NavigateToHome)
+                            }
+                        }
+
+                        _state.update { it.copy(isLoading = false) }
+                    }
                 }
             }
             is StartUIAction.ApplyIDClickAction -> {
                 viewModelScope.launch {
-                    if (isValidUUID(action.id)) {
-                        when (checkUserUseCase(action.id)) {
-                            is Result.Error -> {
-                                _oneTimeEvents.emit(Events.ShowToastInvalidIdError)
-                            }
-                            is Result.Success -> {
-                                _state.update { it.copy(id = action.id) }
-                                _oneTimeEvents.emit(Events.ShowToastSuccessSet)
-                            }
+                    when (checkUserUseCase(action.id)) {
+                        is Result.Error -> {
+                            _oneTimeEvents.emit(Events.ShowToastInvalidIdError)
                         }
-                    } else {
-                        _oneTimeEvents.emit(Events.ShowToastInvalidIdError)
+                        is Result.Success -> {
+                            _state.update { it.copy(id = action.id) }
+                            _oneTimeEvents.emit(Events.ShowToastSuccessSet)
+                        }
                     }
                 }
             }
@@ -72,14 +81,6 @@ class StartViewModel(
         data object NavigateToHome: Events()
         data object ShowToastInvalidIdError: Events()
         data object ShowToastSuccessSet: Events()
-    }
-
-    private fun isValidUUID(id: String): Boolean {
-        return try {
-            UUID.fromString(id)
-            true
-        } catch (e: Exception) {
-            false
-        }
+        data object ShowToastNoServerConnection: Events()
     }
 }

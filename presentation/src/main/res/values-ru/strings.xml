@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_to_todozap">Добро пожаловать в ToDoZap!</string>
+    <string name="hello_blank_fragment">Asd</string> <!-- Оставлено как есть, так как это, вероятно, заглушка -->
+    <string name="home">Главная</string>
+    <string name="settings">Настройки</string>
+    <string name="use_default_server">Использовать сервер по умолчанию</string>
+    <string name="recommended">Рекомендуется</string>
+    <string name="use_my_own_server">Использовать мой собственный сервер</string>
+    <string name="restore_account">Восстановить аккаунт</string>
+    <string name="finish">Завершить</string>
+    <string name="http_111_111_1_11">http://111.111.1.11/</string> <!-- Оставлено как есть, так как это URL -->
+    <string name="link">Ссылка</string>
+    <string name="enter_your_previous_id">Введите ваш предыдущий ID</string>
+    <string name="apply">Применить</string>
+    <string name="cancel">Отмена</string>
+    <string name="see_instructions">Смотреть инструкции</string>
+    <string name="invalid_id">Неверный ID</string>
+    <string name="successfully_set">Успешно установлено</string>
+    <string name="overdue">Просрочено</string>
+    <string name="pending">Ожидает</string>
+    <string name="complete">Завершено</string>
+    <string name="delete">Удалить</string>
+    <string name="language">Язык</string>
+    <string name="server">Сервер</string>
+    <string name="copy_id">Скопировать ID</string>
+    <string name="contact_us">Свяжитесь с нами</string>
+    <string name="server_connection_error">Ошибка в соединении с сервером</string>
+</resources>
