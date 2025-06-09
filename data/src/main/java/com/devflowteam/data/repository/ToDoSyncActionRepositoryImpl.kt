@@ -47,4 +47,26 @@ class ToDoSyncActionRepositoryImpl(
             Result.Error(DataError.Local.UNKNOWN)
         }
     }
+
+    override suspend fun deleteAll(): Result<Unit, DataError.Local> {
+        return withContext(Dispatchers.IO) {
+            try {
+                dao.deleteAll()
+                Result.Success(Unit)
+            } catch (e: Exception) {
+                Result.Error(DataError.Local.UNKNOWN)
+            }
+        }
+    }
+
+    override suspend fun insert(toDoSyncAction: ToDoSyncAction): Result<Unit, DataError.Local> {
+        return withContext(Dispatchers.IO) {
+            try {
+                dao.insert(toDoSyncAction.toEntity())
+                Result.Success(Unit)
+            } catch (e: Exception) {
+                Result.Error(DataError.Local.UNKNOWN)
+            }
+        }
+    }
 }

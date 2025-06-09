@@ -1,6 +1,8 @@
 package com.devflowteam.data.repository
 
+import android.util.Log
 import com.devflowteam.core.common.DataError
+import com.devflowteam.core.common.DataSuccess
 import com.devflowteam.core.common.Result
 import com.devflowteam.data.remote.ApiService
 import com.devflowteam.data.remote.request.TaskRequest
@@ -15,7 +17,7 @@ class ApiServiceRepositoryImpl(
     private val apiService: ApiService
 ): ApiServiceRepository {
 
-    override suspend fun addUser(id: String): Result<Unit, DataError.Network> {
+    override suspend fun addUser(id: String): Result<DataSuccess.Network, DataError.Network> {
         return withContext(Dispatchers.IO) {
             try {
                 val response = apiService.addUser(UserRequest(id))
@@ -24,14 +26,15 @@ class ApiServiceRepositoryImpl(
                     val codeResponse = response.body()
 
                     when (codeResponse?.code) {
-                        0 -> Result.Success(Unit)
+                        0 -> Result.Success(DataSuccess.Network.INSERTED)
+                        8 -> Result.Success(DataSuccess.Network.EXISTS)
                         else -> Result.Error(DataError.Network.EXTERNAL)
                     }
                 } else {
                     throw Exception()
                 }
             } catch (e: Exception) {
-                Result.Error(DataError.Network.UNKNOWN)
+                Result.Error(DataError.Network.NO_SERVER_AVAILABLE)
             }
         }
     }

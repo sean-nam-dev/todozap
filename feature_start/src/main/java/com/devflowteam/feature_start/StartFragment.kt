@@ -1,33 +1,26 @@
 package com.devflowteam.feature_start
 
 import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.setPadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.devflowteam.domain.model.Status
-import com.devflowteam.domain.model.ToDo
-import com.devflowteam.domain.usecase.UpsertToDoUseCase
 import com.devflowteam.feature_start.databinding.FragmentStartBinding
+import com.devflowteam.core.utils.Links
+import com.devflowteam.presentation.component.getCustomDialog
 import com.devflowteam.presentation.utils.getThemeColor
 import com.devflowteam.presentation.utils.openWebsite
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.component.inject
 
 class StartFragment : Fragment(R.layout.fragment_start) {
 
@@ -35,6 +28,7 @@ class StartFragment : Fragment(R.layout.fragment_start) {
     private val binding get() = _binding!!
 
     private val viewModel: StartViewModel by viewModel()
+
     private lateinit var dialog: AlertDialog
 
     override fun onCreateView(
@@ -42,6 +36,9 @@ class StartFragment : Fragment(R.layout.fragment_start) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
+
+        initDialog()
+
         return binding.root
     }
 
@@ -49,10 +46,9 @@ class StartFragment : Fragment(R.layout.fragment_start) {
         super.onViewCreated(view, savedInstanceState)
 
         applyColors()
-        initDialog()
         applyListeners()
         observeEvents()
-        observeStates()
+        observeState()
     }
 
     override fun onDestroyView() {
@@ -77,14 +73,27 @@ class StartFragment : Fragment(R.layout.fragment_start) {
         }
 
         binding.buttonSeeInstructions.setOnClickListener {
-            requireContext().openWebsite("https://ru.wikipedia.org/wiki/Hello,_world!")
+            requireContext().openWebsite(Links.INSTRUCTIONS)
         }
     }
 
     private fun initDialog() {
-        dialog = getDialog { id ->
-            viewModel.onStartUIAction(StartUIAction.ApplyIDClickAction(id))
+        val editText = TextInputEditText(requireContext()).apply {
+            maxLines = 1
+            setTextColor(requireContext().getThemeColor(com.google.android.material.R.attr.colorOnPrimary))
         }
+
+        dialog = getCustomDialog(
+            context = requireContext(),
+            innerView = editText,
+            titleText = resources.getString(com.devflowteam.presentation.R.string.enter_your_previous_id),
+            positiveButtonText = resources.getString(com.devflowteam.presentation.R.string.apply),
+            negativeButtonText = resources.getString(com.devflowteam.presentation.R.string.cancel),
+            extractValue = { editText.text.toString().trim() },
+            onPositiveButtonClickListener = { id: String ->
+                viewModel.onStartUIAction(StartUIAction.ApplyIDClickAction(id))
+            }
+        )
     }
 
     private fun applyColors() {
@@ -92,35 +101,6 @@ class StartFragment : Fragment(R.layout.fragment_start) {
 
         binding.defaultRadioButtonServer.buttonTintList = color
         binding.ownRadioButtonServer.buttonTintList = color
-    }
-
-    private fun getDialog(onPositiveButtonClickAction: (String) -> Unit): AlertDialog {
-        val editText = TextInputEditText(requireContext()).apply {
-            maxLines = 1
-            setTextColor(requireContext().getThemeColor(com.google.android.material.R.attr.colorOnPrimary))
-        }
-
-        return MaterialAlertDialogBuilder(requireContext(), com.devflowteam.presentation.R.style.LightDialogTheme)
-            .setPositiveButton(resources.getString(com.devflowteam.presentation.R.string.apply)) { _, _ ->
-                val userInput = editText.text.toString().trim()
-                if (userInput.isNotBlank()) {
-                    onPositiveButtonClickAction(userInput)
-                }
-            }
-            .setNegativeButton(resources.getString(com.devflowteam.presentation.R.string.cancel)) { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setView(editText)
-            .setCustomTitle(
-                TextView(requireContext()).apply {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        setTextAppearance(com.devflowteam.presentation.R.style.TextAppearance_ToDoZap_BodyLarge)
-                    }
-                    setTextColor(requireContext().getThemeColor(com.google.android.material.R.attr.colorOnPrimary))
-                    text = resources.getString(com.devflowteam.presentation.R.string.enter_your_previous_id)
-                    setPadding(35)
-                }
-            ).create()
     }
 
     private fun observeEvents() {
@@ -164,7 +144,7 @@ class StartFragment : Fragment(R.layout.fragment_start) {
         }
     }
 
-    private fun observeStates() {
+    private fun observeState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->

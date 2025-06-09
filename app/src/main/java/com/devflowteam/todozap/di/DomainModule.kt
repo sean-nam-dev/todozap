@@ -1,31 +1,34 @@
 package com.devflowteam.todozap.di
 
-import com.devflowteam.domain.usecase.AddToDoUseCase
-import com.devflowteam.domain.usecase.AddUserUseCase
-import com.devflowteam.domain.usecase.ChangeDarkModeUseCase
-import com.devflowteam.domain.usecase.ChangeFirstLaunchUseCase
-import com.devflowteam.domain.usecase.ChangeHardSyncUseCase
-import com.devflowteam.domain.usecase.ChangeIDUseCase
-import com.devflowteam.domain.usecase.ChangeLanguageUseCase
-import com.devflowteam.domain.usecase.ChangeServerUseCase
-import com.devflowteam.domain.usecase.CheckUserUseCase
-import com.devflowteam.domain.usecase.DeleteTaskUseCase
-import com.devflowteam.domain.usecase.DeleteToDoSyncActionUseCase
-import com.devflowteam.domain.usecase.DeleteToDoUseCase
-import com.devflowteam.domain.usecase.GetAllTasksUseCase
-import com.devflowteam.domain.usecase.GetAllToDoSyncActionUseCase
-import com.devflowteam.domain.usecase.GetAllToDoUseCase
-import com.devflowteam.domain.usecase.GetDarkModeUseCase
-import com.devflowteam.domain.usecase.GetFirstLaunchUseCase
-import com.devflowteam.domain.usecase.GetIDUseCase
-import com.devflowteam.domain.usecase.GetLanguageUseCase
-import com.devflowteam.domain.usecase.GetServerUseCase
+import com.devflowteam.domain.usecase.MigrateDataUseCase
+import com.devflowteam.domain.usecase.remote.AddTaskUseCase
+import com.devflowteam.domain.usecase.remote.AddUserUseCase
+import com.devflowteam.domain.usecase.settings.ChangeDarkModeUseCase
+import com.devflowteam.domain.usecase.settings.ChangeFirstLaunchUseCase
+import com.devflowteam.domain.usecase.settings.ChangeHardSyncUseCase
+import com.devflowteam.domain.usecase.settings.ChangeIDUseCase
+import com.devflowteam.domain.usecase.settings.ChangeLanguageUseCase
+import com.devflowteam.domain.usecase.settings.ChangeServerUseCase
+import com.devflowteam.domain.usecase.remote.CheckUserUseCase
+import com.devflowteam.domain.usecase.remote.DeleteTaskUseCase
+import com.devflowteam.domain.usecase.local.todosync.DeleteToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todo.DeleteToDoUseCase
+import com.devflowteam.domain.usecase.remote.GetAllTasksUseCase
+import com.devflowteam.domain.usecase.local.todosync.GetAllToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todo.GetAllToDoUseCase
+import com.devflowteam.domain.usecase.settings.GetDarkModeUseCase
+import com.devflowteam.domain.usecase.settings.GetIDUseCase
+import com.devflowteam.domain.usecase.settings.GetLanguageUseCase
+import com.devflowteam.domain.usecase.settings.GetServerUseCase
 import com.devflowteam.domain.usecase.OpenWebsiteUseCase
-import com.devflowteam.domain.usecase.SearchToDoUseCase
-import com.devflowteam.domain.usecase.UpdateTaskUseCase
-import com.devflowteam.domain.usecase.UpsertTaskUseCase
-import com.devflowteam.domain.usecase.UpsertToDoSyncActionUseCase
-import com.devflowteam.domain.usecase.UpsertToDoUseCase
+import com.devflowteam.domain.usecase.local.todo.SearchToDoUseCase
+import com.devflowteam.domain.usecase.remote.UpdateTaskUseCase
+import com.devflowteam.domain.usecase.remote.UpsertTaskUseCase
+import com.devflowteam.domain.usecase.local.todosync.UpsertToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todo.UpsertToDoUseCase
+import com.devflowteam.domain.usecase.local.todosync.DeleteAllToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todosync.InsertToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.settings.GetFirstLaunchUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -40,28 +43,28 @@ val domainModule = module {
         GetAllToDoUseCase(toDoRepository = get())
     }
     factory {
-        GetServerUseCase(settingsRepository = get())
+        GetServerUseCase(dataStoreRepository = get())
     }
     factory {
-        ChangeServerUseCase(settingsRepository = get())
+        ChangeServerUseCase(dataStoreRepository = get())
     }
     factory {
-        GetIDUseCase(settingsRepository = get())
+        GetIDUseCase(dataStoreRepository = get())
     }
     factory {
-        ChangeIDUseCase(settingsRepository = get())
+        ChangeIDUseCase(dataStoreRepository = get())
     }
     factory {
-        GetDarkModeUseCase(settingsRepository = get())
+        GetDarkModeUseCase(dataStoreRepository = get())
     }
     factory {
-        ChangeDarkModeUseCase(settingsRepository = get())
+        ChangeDarkModeUseCase(dataStoreRepository = get())
     }
     factory {
-        GetFirstLaunchUseCase(settingsRepository = get())
+        GetFirstLaunchUseCase(sharedPrefsRepository = get())
     }
     factory {
-        ChangeFirstLaunchUseCase(settingsRepository = get())
+        ChangeFirstLaunchUseCase(sharedPrefsRepository = get())
     }
     factory {
         GetAllTasksUseCase(
@@ -76,7 +79,7 @@ val domainModule = module {
         )
     }
     factory {
-        AddToDoUseCase(
+        AddTaskUseCase(
             getIDUseCase = get(),
             apiServiceRepository = get()
         )
@@ -109,6 +112,21 @@ val domainModule = module {
         )
     }
     factory {
+        InsertToDoSyncActionUseCase(
+            repository = get()
+        )
+    }
+    factory {
+        DeleteAllToDoSyncActionUseCase(
+            repository = get()
+        )
+    }
+    factory {
+        DeleteToDoUseCase(
+            toDoRepository = get()
+        )
+    }
+    factory {
         UpsertToDoUseCase(
             toDoRepository = get()
         )
@@ -136,17 +154,27 @@ val domainModule = module {
     }
     factory {
         ChangeHardSyncUseCase(
-            settingsRepository = get()
+            dataStoreRepository = get()
         )
     }
     factory {
         GetLanguageUseCase(
-            settingsRepository = get()
+            dataStoreRepository = get()
         )
     }
     factory {
         ChangeLanguageUseCase(
-            settingsRepository = get()
+            dataStoreRepository = get()
+        )
+    }
+    factory {
+        MigrateDataUseCase(
+            changeServerUseCase = get(),
+            addUserUseCase = get(),
+            getAllToDoUseCase = get(),
+            upsertTaskUseCase = get(),
+            deleteAllToDoSyncActionUseCase = get(),
+            insertToDoSyncActionUseCase = get()
         )
     }
 }

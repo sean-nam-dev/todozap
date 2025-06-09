@@ -2,7 +2,9 @@ package com.devflowteam.todozap.di
 
 import com.devflowteam.feature_home.ui.home.HomeViewModel
 import com.devflowteam.feature_language.LanguageViewModel
+import com.devflowteam.feature_server.ServerViewModel
 import com.devflowteam.feature_start.StartViewModel
+import com.devflowteam.presentation.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -35,14 +37,18 @@ val appModule = module {
         )
     }
 
-//    factory { MyViewModel(get()) }
+    viewModel {
+        ServerViewModel(
+            openWebsiteUseCase = get(),
+            migrateDataUseCase = get()
+        )
+    }
 
-//    viewModel<SomeViewModel> {
-//        SomeViewModel(
-//            userCase1 = get(),
-//            useCase2 = get()
-//        )
-//    }
+    viewModel {
+        MainViewModel(
+            changeLanguageUseCase = get(),
+            getFirstLaunchUseCase = get(),
+            getIDUseCase = get(),
+        )
+    }
 }
-
-// private val vm by viewModel<SomeViewModel>()

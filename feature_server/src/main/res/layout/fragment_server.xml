@@ -6,12 +6,58 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.devflowteam.feature_server.ServerFragment"
-    android:background="?attr/background">
+    android:background="?attr/background"
+    android:padding="@dimen/standard_padding">
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
+        android:id="@+id/textInputLayoutServerChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/link"
+        app:prefixText="@string/http"
+        app:prefixTextColor="?attr/colorOnPrimary"
+        app:prefixTextAppearance="@style/TextAppearance.ToDoZap.BodyLarge"
+        app:boxStrokeColor="?attr/colorOnPrimary"
+        app:cursorColor="?attr/colorOnPrimary"
+        app:hintTextColor="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextServerChange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:textColor="?attr/colorOnPrimary"
+            android:textAppearance="@style/TextAppearance.ToDoZap.BodyLarge" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonSeeInstructions"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Server"
+        android:text="@string/see_instructions"
+        android:textAppearance="@style/TextAppearance.ToDoZap.BodySmall"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutServerChange"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressTint="?attr/colorSecondary"
+        android:indeterminate="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

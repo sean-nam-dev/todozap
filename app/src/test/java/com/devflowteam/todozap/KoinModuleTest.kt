@@ -2,17 +2,16 @@ package com.devflowteam.todozap
 
 import android.content.Context
 import com.devflowteam.domain.repository.ToDoRepository
-import com.devflowteam.domain.usecase.ChangeDarkModeUseCase
-import com.devflowteam.domain.usecase.ChangeFirstLaunchUseCase
-import com.devflowteam.domain.usecase.ChangeIDUseCase
-import com.devflowteam.domain.usecase.ChangeServerUseCase
-import com.devflowteam.domain.usecase.DeleteToDoUseCase
-import com.devflowteam.domain.usecase.GetAllToDoUseCase
-import com.devflowteam.domain.usecase.GetDarkModeUseCase
-import com.devflowteam.domain.usecase.GetFirstLaunchUseCase
-import com.devflowteam.domain.usecase.GetIDUseCase
-import com.devflowteam.domain.usecase.GetServerUseCase
-import com.devflowteam.domain.usecase.UpsertToDoUseCase
+import com.devflowteam.domain.usecase.settings.ChangeDarkModeUseCase
+import com.devflowteam.domain.usecase.settings.ChangeFirstLaunchUseCase
+import com.devflowteam.domain.usecase.settings.ChangeIDUseCase
+import com.devflowteam.domain.usecase.settings.ChangeServerUseCase
+import com.devflowteam.domain.usecase.local.todo.DeleteToDoUseCase
+import com.devflowteam.domain.usecase.local.todo.GetAllToDoUseCase
+import com.devflowteam.domain.usecase.settings.GetDarkModeUseCase
+import com.devflowteam.domain.usecase.settings.GetIDUseCase
+import com.devflowteam.domain.usecase.settings.GetServerUseCase
+import com.devflowteam.domain.usecase.local.todo.UpsertToDoUseCase
 import com.devflowteam.todozap.di.appModule
 import com.devflowteam.todozap.di.dataModule
 import com.devflowteam.todozap.di.domainModule

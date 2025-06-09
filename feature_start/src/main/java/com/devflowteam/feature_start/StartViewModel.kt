@@ -2,10 +2,10 @@ package com.devflowteam.feature_start
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devflowteam.domain.usecase.ChangeFirstLaunchUseCase
-import com.devflowteam.domain.usecase.ChangeIDUseCase
-import com.devflowteam.domain.usecase.ChangeServerUseCase
-import com.devflowteam.domain.usecase.CheckUserUseCase
+import com.devflowteam.domain.usecase.settings.ChangeFirstLaunchUseCase
+import com.devflowteam.domain.usecase.settings.ChangeIDUseCase
+import com.devflowteam.domain.usecase.settings.ChangeServerUseCase
+import com.devflowteam.domain.usecase.remote.CheckUserUseCase
 import com.devflowteam.domain.usecase.OpenWebsiteUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.devflowteam.core.common.Result
-import com.devflowteam.domain.usecase.AddUserUseCase
+import com.devflowteam.domain.usecase.remote.AddUserUseCase
 
 class StartViewModel(
     private val openWebsiteUseCase: OpenWebsiteUseCase,
@@ -72,7 +72,7 @@ class StartViewModel(
                 }
             }
             is StartUIAction.SeeInstructionsClickAction -> {
-                openWebsiteUseCase.invoke(action.url)
+                openWebsiteUseCase(action.url)
             }
         }
     }

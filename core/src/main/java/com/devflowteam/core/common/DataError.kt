@@ -4,7 +4,8 @@ sealed interface DataError {
 
     enum class Network: Error {
         EXTERNAL,
-        UNKNOWN
+        UNKNOWN,
+        NO_SERVER_AVAILABLE
     }
 
     enum class Local: Error {
@@ -12,3 +13,5 @@ sealed interface DataError {
         UNKNOWN
     }
 }
+
+sealed interface Error

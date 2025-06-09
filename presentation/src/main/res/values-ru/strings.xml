@@ -26,4 +26,11 @@
     <string name="copy_id">Скопировать ID</string>
     <string name="contact_us">Свяжитесь с нами</string>
     <string name="server_connection_error">Ошибка в соединении с сервером</string>
+    <string name="server_link">Ссылка на сервер</string>
+    <string name="change_server">Сменить сервер</string>
+    <string name="could_not_connect_to_server">Ошибка при подключении к серверу</string>
+    <string name="server_has_been_changed_successfully">Сервер успешно изменен</string>
+    <string name="copied">Скопировано</string>
+    <string name="missing_mail_app">Отсутствует почтовое приложение</string>
+    <string name="user_id">Пользовательский идентификатор</string>
 </resources>

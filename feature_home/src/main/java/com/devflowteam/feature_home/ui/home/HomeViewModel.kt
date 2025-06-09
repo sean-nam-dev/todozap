@@ -7,10 +7,10 @@ import com.devflowteam.core.utils.Action
 import com.devflowteam.data.local.toSyncAction
 import com.devflowteam.domain.model.Status
 import com.devflowteam.domain.model.ToDo
-import com.devflowteam.domain.usecase.DeleteToDoUseCase
-import com.devflowteam.domain.usecase.GetAllToDoUseCase
-import com.devflowteam.domain.usecase.UpsertToDoSyncActionUseCase
-import com.devflowteam.domain.usecase.UpsertToDoUseCase
+import com.devflowteam.domain.usecase.local.todo.DeleteToDoUseCase
+import com.devflowteam.domain.usecase.local.todo.GetAllToDoUseCase
+import com.devflowteam.domain.usecase.local.todosync.UpsertToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todo.UpsertToDoUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow

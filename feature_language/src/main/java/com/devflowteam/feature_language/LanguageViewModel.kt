@@ -2,8 +2,8 @@ package com.devflowteam.feature_language
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devflowteam.domain.usecase.ChangeLanguageUseCase
-import com.devflowteam.domain.usecase.GetLanguageUseCase
+import com.devflowteam.domain.usecase.settings.ChangeLanguageUseCase
+import com.devflowteam.domain.usecase.settings.GetLanguageUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first

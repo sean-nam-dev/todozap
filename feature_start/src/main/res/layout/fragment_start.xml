@@ -35,7 +35,7 @@
         <RadioButton
             android:id="@+id/defaultRadioButtonServer"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/use_default_server"
             android:textAppearance="@style/TextAppearance.ToDoZap.BodyLarge"
@@ -57,7 +57,7 @@
         <RadioButton
             android:id="@+id/ownRadioButtonServer"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/use_my_own_server"
             android:textAppearance="@style/TextAppearance.ToDoZap.BodyLarge"
@@ -90,8 +90,7 @@
             android:maxLines="1"
             android:inputType="text"
             android:textColor="?attr/colorOnPrimary"
-            android:textAppearance="@style/TextAppearance.ToDoZap.BodyLarge"
-            />
+            android:textAppearance="@style/TextAppearance.ToDoZap.BodyLarge" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

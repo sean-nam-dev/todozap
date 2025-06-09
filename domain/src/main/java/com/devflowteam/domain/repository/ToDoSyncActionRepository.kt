@@ -12,4 +12,8 @@ interface ToDoSyncActionRepository {
     suspend fun delete(toDoSyncAction: ToDoSyncAction): Result<Unit, DataError.Local>
 
     fun getAll(): Result<Flow<List<ToDoSyncAction>>, DataError.Local>
+
+    suspend fun deleteAll(): Result<Unit, DataError.Local>
+
+    suspend fun insert(toDoSyncAction: ToDoSyncAction): Result<Unit, DataError.Local>
 }

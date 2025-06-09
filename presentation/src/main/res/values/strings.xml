@@ -27,4 +27,13 @@
     <string name="copy_id">Copy id</string>
     <string name="contact_us">Contact us</string>
     <string name="server_connection_error">Server connection error</string>
+    <string name="server_link">Server link</string>
+    <string name="change_server">Change server</string>
+    <string name="could_not_connect_to_server">Could not connect to server</string>
+    <string name="server_has_been_changed_successfully">Server has been changed successfully</string>
+    <string name="copied">Copied</string>
+    <string name="missing_mail_app">Missing mail app</string>
+    <string name="user_id">User id</string>
+
+    <string name="http" translatable="false">http://</string>
 </resources>

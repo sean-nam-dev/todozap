@@ -1,5 +1,10 @@
 package com.devflowteam.todozap.di
 
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
 import com.devflowteam.core.utils.Settings
 import com.devflowteam.data.local.todo.ToDoDao
@@ -10,12 +15,12 @@ import com.devflowteam.data.remote.ApiService
 import com.devflowteam.data.remote.NetworkMonitor
 import com.devflowteam.data.remote.SyncManager
 import com.devflowteam.data.repository.ApiServiceRepositoryImpl
-import com.devflowteam.data.repository.SettingsRepositoryImpl
+import com.devflowteam.data.repository.DataStoreRepositoryImpl
 import com.devflowteam.data.repository.ToDoRepositoryImpl
 import com.devflowteam.data.repository.ToDoSyncActionRepositoryImpl
 import com.devflowteam.data.repository.WebsiteNavigatorRepositoryImpl
 import com.devflowteam.domain.repository.ApiServiceRepository
-import com.devflowteam.domain.repository.SettingsRepository
+import com.devflowteam.domain.repository.DataStoreRepository
 import com.devflowteam.domain.repository.ToDoRepository
 import com.devflowteam.domain.repository.ToDoSyncActionRepository
 import com.devflowteam.domain.repository.WebsiteNavigatorRepository
@@ -30,6 +35,11 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import androidx.datastore.preferences.core.Preferences
+import com.devflowteam.data.local.dataStore
+import com.devflowteam.data.local.sharedPreferences
+import com.devflowteam.data.repository.SharedPrefsRepositoryImpl
+import com.devflowteam.domain.repository.SharedPrefsRepository
 
 val dataModule = module {
 
@@ -40,9 +50,9 @@ val dataModule = module {
                 val originalRequest = chain.request()
                 val originalUrl = originalRequest.url
 
-                val settingsRepository: SettingsRepository = get()
+                val dataStoreRepository: DataStoreRepository = get()
                 val baseUrl = runBlocking {
-                    settingsRepository.read(Settings.Server).first()
+                    dataStoreRepository.read(Settings.Server).first()
                 }
 
                 val parsedBaseUrl = baseUrl.toHttpUrl()
@@ -123,6 +133,14 @@ val dataModule = module {
         NetworkMonitor(context = get())
     }
 
+    single<DataStore<Preferences>> {
+        get<Context>().dataStore
+    }
+
+    single<SharedPreferences> {
+        get<Context>().sharedPreferences
+    }
+
     single<SyncManager> {
         SyncManager(
             networkMonitor = get(),
@@ -149,8 +167,12 @@ val dataModule = module {
         )
     }
 
-    single<SettingsRepository> {
-        SettingsRepositoryImpl(context = get())
+    single<DataStoreRepository> {
+        DataStoreRepositoryImpl(dataStore = get())
+    }
+
+    single<SharedPrefsRepository> {
+        SharedPrefsRepositoryImpl(sharedPreferences = get())
     }
 
     single<ApiServiceRepository> {

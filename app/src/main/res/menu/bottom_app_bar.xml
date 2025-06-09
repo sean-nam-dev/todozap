@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/home_graph"
         android:icon="@drawable/ic_round_home"
         android:title="@string/home"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/languageFragment"
+        android:id="@+id/language_graph"
         android:icon="@drawable/ic_round_language"
         android:title="@string/language"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/serverFragment"
+        android:id="@+id/server_graph"
         android:icon="@drawable/ic_round_server"
         android:title="@string/server"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/id"
+        android:id="@+id/copyId"
         android:title="@string/copy_id"
         app:showAsAction="never"/>
 

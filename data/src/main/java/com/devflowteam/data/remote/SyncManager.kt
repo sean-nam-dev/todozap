@@ -3,19 +3,15 @@ package com.devflowteam.data.remote
 import com.devflowteam.core.common.DataError
 import com.devflowteam.core.common.Result
 import com.devflowteam.core.utils.Action
-import com.devflowteam.domain.model.ToDoSyncAction
-import com.devflowteam.domain.usecase.ChangeHardSyncUseCase
-import com.devflowteam.domain.usecase.DeleteToDoSyncActionUseCase
-import com.devflowteam.domain.usecase.GetAllToDoSyncActionUseCase
-import com.devflowteam.domain.usecase.SearchToDoUseCase
-import com.devflowteam.domain.usecase.UpsertTaskUseCase
+import com.devflowteam.domain.usecase.settings.ChangeHardSyncUseCase
+import com.devflowteam.domain.usecase.local.todosync.DeleteToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todosync.GetAllToDoSyncActionUseCase
+import com.devflowteam.domain.usecase.local.todo.SearchToDoUseCase
+import com.devflowteam.domain.usecase.remote.UpsertTaskUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class SyncManager(
