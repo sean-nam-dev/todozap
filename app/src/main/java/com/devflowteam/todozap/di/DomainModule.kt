@@ -1,6 +1,6 @@
 package com.devflowteam.todozap.di
 
-import com.devflowteam.domain.usecase.MigrateDataUseCase
+import com.devflowteam.domain.usecase.MigrateServerUseCase
 import com.devflowteam.domain.usecase.remote.AddTaskUseCase
 import com.devflowteam.domain.usecase.remote.AddUserUseCase
 import com.devflowteam.domain.usecase.settings.ChangeDarkModeUseCase
@@ -20,7 +20,6 @@ import com.devflowteam.domain.usecase.settings.GetDarkModeUseCase
 import com.devflowteam.domain.usecase.settings.GetIDUseCase
 import com.devflowteam.domain.usecase.settings.GetLanguageUseCase
 import com.devflowteam.domain.usecase.settings.GetServerUseCase
-import com.devflowteam.domain.usecase.OpenWebsiteUseCase
 import com.devflowteam.domain.usecase.local.todo.SearchToDoUseCase
 import com.devflowteam.domain.usecase.remote.UpdateTaskUseCase
 import com.devflowteam.domain.usecase.remote.UpsertTaskUseCase
@@ -137,11 +136,6 @@ val domainModule = module {
         )
     }
     factory {
-        OpenWebsiteUseCase(
-            websiteNavigatorRepository = get()
-        )
-    }
-    factory {
         SearchToDoUseCase(
             toDoRepository = get()
         )
@@ -168,7 +162,7 @@ val domainModule = module {
         )
     }
     factory {
-        MigrateDataUseCase(
+        MigrateServerUseCase(
             changeServerUseCase = get(),
             addUserUseCase = get(),
             getAllToDoUseCase = get(),

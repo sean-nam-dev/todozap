@@ -3,8 +3,7 @@ package com.devflowteam.feature_server
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devflowteam.core.common.Result
-import com.devflowteam.domain.usecase.MigrateDataUseCase
-import com.devflowteam.domain.usecase.OpenWebsiteUseCase
+import com.devflowteam.domain.usecase.MigrateServerUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,8 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class ServerViewModel(
-    private val openWebsiteUseCase: OpenWebsiteUseCase,
-    private val migrateDataUseCase: MigrateDataUseCase
+    private val migrateServerUseCase: MigrateServerUseCase
 ): ViewModel() {
 
     private val _state = MutableStateFlow(ServerUIState())
@@ -25,16 +23,16 @@ class ServerViewModel(
 
     fun onServerUIAction(action: ServerUIAction) {
         when (action) {
-            is ServerUIAction.OnApplyClick -> {
+            is ServerUIAction.DoneServerChangeClickListener -> {
                 viewModelScope.launch {
                     _state.update { it.copy(isLoading = true) }
 
-                    when (migrateDataUseCase(action.serverLink)) {
+                    when (migrateServerUseCase(action.newServer)) {
                         is Result.Error -> {
-                            _oneTimeEvents.emit(Events.ShowErrorToast)
+                            _oneTimeEvents.emit(Events.ShowToast(action.errorMessage))
                         }
                         is Result.Success -> {
-                            _oneTimeEvents.emit(Events.ShowSuccessfulToast)
+                            _oneTimeEvents.emit(Events.ShowToast(action.successMessage))
                         }
                     }
 
@@ -42,13 +40,15 @@ class ServerViewModel(
                 }
             }
             is ServerUIAction.SeeInstructionsClickAction -> {
-                openWebsiteUseCase(action.url)
+                viewModelScope.launch {
+                    _oneTimeEvents.emit(Events.OpenWebsite(action.url))
+                }
             }
         }
     }
 
     sealed class Events {
-        data object ShowSuccessfulToast: Events()
-        data object ShowErrorToast: Events()
+        data class ShowToast(val message: String): Events()
+        data class OpenWebsite(val link: String): Events()
     }
 }

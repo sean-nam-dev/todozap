@@ -8,6 +8,7 @@
     <include app:graph="@navigation/home_graph" />
     <include app:graph="@navigation/server_graph" />
     <include app:graph="@navigation/language_graph" />
+    <include app:graph="@navigation/creation_graph" />
 
     <!--    <fragment-->
 <!--        android:id="@+id/startFragment"-->

@@ -32,4 +32,6 @@
     <color name="on_light_pink">#4A4035</color> <!-- Dark gray for text/icons on light pink -->
 
     <color name="medium_gray">#8A7A6B</color> <!-- Medium gray for borders, inactive icons -->
+    
+    <color name="white_low_alpha">#80FFFFFF</color>
 </resources>

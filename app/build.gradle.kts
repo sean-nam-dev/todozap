@@ -53,6 +53,7 @@ dependencies {
     implementation(project(":feature_home"))
     implementation(project(":feature_language"))
     implementation(project(":feature_server"))
+    implementation(project(":feature_creation"))
 
     implementation(libs.androidx.datastore.preferences)
 

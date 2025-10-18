@@ -34,6 +34,12 @@
     <string name="copied">Copied</string>
     <string name="missing_mail_app">Missing mail app</string>
     <string name="user_id">User id</string>
+    <string name="schedule">Schedule</string>
+    <string name="title">Title</string>
+    <string name="text">Text</string>
+    <string name="save">Save</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="select_date">Select date</string>
 
     <string name="http" translatable="false">http://</string>
 </resources>

@@ -18,12 +18,10 @@ import com.devflowteam.data.repository.ApiServiceRepositoryImpl
 import com.devflowteam.data.repository.DataStoreRepositoryImpl
 import com.devflowteam.data.repository.ToDoRepositoryImpl
 import com.devflowteam.data.repository.ToDoSyncActionRepositoryImpl
-import com.devflowteam.data.repository.WebsiteNavigatorRepositoryImpl
 import com.devflowteam.domain.repository.ApiServiceRepository
 import com.devflowteam.domain.repository.DataStoreRepository
 import com.devflowteam.domain.repository.ToDoRepository
 import com.devflowteam.domain.repository.ToDoSyncActionRepository
-import com.devflowteam.domain.repository.WebsiteNavigatorRepository
 import com.devflowteam.presentation.utils.ContextResourceManager
 import com.devflowteam.presentation.utils.ResourceManager
 import kotlinx.coroutines.flow.first
@@ -177,10 +175,6 @@ val dataModule = module {
 
     single<ApiServiceRepository> {
         ApiServiceRepositoryImpl(apiService = get())
-    }
-
-    single<WebsiteNavigatorRepository> {
-        WebsiteNavigatorRepositoryImpl(context = get())
     }
 
     single<ResourceManager> {

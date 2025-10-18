@@ -14,7 +14,7 @@ import com.devflowteam.domain.usecase.settings.ChangeServerUseCase
 import kotlinx.coroutines.flow.first
 import java.lang.Exception
 
-class MigrateDataUseCase(
+class MigrateServerUseCase(
     private val changeServerUseCase: ChangeServerUseCase,
     private val addUserUseCase: AddUserUseCase,
     private val getAllToDoUseCase: GetAllToDoUseCase,

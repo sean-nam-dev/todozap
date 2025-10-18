@@ -68,13 +68,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="?attr/textInputFilledStyle"
-        android:id="@+id/textInputOwnServer"
+        android:id="@+id/textInputLayoutTextServerChange"
         android:visibility="gone"
         android:enabled="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/link"
         android:paddingHorizontal="@dimen/standard_padding"
+        app:prefixText="@string/http"
+        app:prefixTextColor="?attr/colorOnPrimary"
+        app:prefixTextAppearance="@style/TextAppearance.ToDoZap.BodyLarge"
         app:boxStrokeColor="?attr/colorOnPrimary"
         app:cursorColor="?attr/colorOnPrimary"
         app:hintTextColor="?attr/colorOnPrimary"
@@ -85,10 +88,12 @@
         app:layout_constraintVertical_bias="0.45">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextServerChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
+            android:imeOptions="actionDone"
             android:textColor="?attr/colorOnPrimary"
             android:textAppearance="@style/TextAppearance.ToDoZap.BodyLarge" />
 

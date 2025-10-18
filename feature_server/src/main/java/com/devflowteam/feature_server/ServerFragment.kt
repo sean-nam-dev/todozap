@@ -53,7 +53,13 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(this.windowToken, 0)
-                    viewModel.onServerUIAction(ServerUIAction.OnApplyClick(textView.text.toString()))
+                    viewModel.onServerUIAction(
+                        ServerUIAction.DoneServerChangeClickListener(
+                            newServer = textView.text.toString(),
+                            successMessage = getString(com.devflowteam.presentation.R.string.server_has_been_changed_successfully),
+                            errorMessage = getString(com.devflowteam.presentation.R.string.could_not_connect_to_server)
+                        )
+                    )
                     true
                 } else {
                     false
@@ -62,7 +68,7 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
         }
 
         binding.buttonSeeInstructions.setOnClickListener {
-            requireContext().openWebsite(Links.INSTRUCTIONS)
+            viewModel.onServerUIAction(ServerUIAction.SeeInstructionsClickAction(Links.INSTRUCTIONS))
         }
     }
 
@@ -72,19 +78,11 @@ class ServerFragment : Fragment(R.layout.fragment_server) {
                 viewModel.oneTimeEvents
                     .collect { event ->
                         when (event) {
-                            ServerViewModel.Events.ShowErrorToast -> {
-                                Toast.makeText(
-                                    requireContext(),
-                                    getString(com.devflowteam.presentation.R.string.could_not_connect_to_server),
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                            is ServerViewModel.Events.OpenWebsite -> {
+                                requireContext().openWebsite(event.link)
                             }
-                            ServerViewModel.Events.ShowSuccessfulToast -> {
-                                Toast.makeText(
-                                    requireContext(),
-                                    getString(com.devflowteam.presentation.R.string.server_has_been_changed_successfully),
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                            is ServerViewModel.Events.ShowToast -> {
+                                Toast.makeText(requireContext(), event.message, Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

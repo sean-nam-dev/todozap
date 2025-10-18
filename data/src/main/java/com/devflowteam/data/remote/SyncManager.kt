@@ -10,8 +10,11 @@ import com.devflowteam.domain.usecase.local.todo.SearchToDoUseCase
 import com.devflowteam.domain.usecase.remote.UpsertTaskUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.runningReduce
 import kotlinx.coroutines.launch
 
 class SyncManager(
@@ -26,6 +29,7 @@ class SyncManager(
     fun start() {
         CoroutineScope(Dispatchers.IO).launch {
             networkMonitor.isConnected
+                .runningReduce { previous, current -> current && !previous }
                 .filter { it }
                 .collectLatest {
                     handleSync()
@@ -65,56 +69,8 @@ class SyncManager(
         repeat(times) {
             val result = block()
             if (result is Result.Success) return true
+            delay(500)
         }
         return false
     }
-
-//     operator fun invoke() {
-//         CoroutineScope(Dispatchers.IO).launch {
-//             networkMonitor.isConnected.collect { isOnline ->
-//                 if (isOnline) {
-//                     val result = getAllToDoSyncActionUseCase()
-//
-//                     if (result is Result.Success) {
-//
-//                         result.data.collect { list ->
-//                             list.forEach { item ->
-//                                 var isFailed = true
-//                                 val searchResult = searchToDoUseCase(item.toDoId)
-//
-//                                 if (searchResult is Result.Success) {
-//                                     repeat(5) {
-//                                         when (item.action) {
-//                                             Action.UPSERT -> {
-//                                                 val upsertResult = upsertTaskUseCase(searchResult.data)
-//
-//                                                 if (upsertResult is Result.Success) {
-//                                                     isFailed = false
-//                                                     return@repeat
-//                                                 }
-//                                             }
-//                                             Action.DELETE -> {
-//                                                 val deleteResult = deleteTaskUseCase(searchResult.data)
-//
-//                                                 if (deleteResult is Result.Success) {
-//                                                     isFailed = false
-//                                                     return@repeat
-//                                                 }
-//                                             }
-//                                         }
-//                                     }
-//                                 }
-//
-//                                 if (isFailed) {
-//                                     changeHardSyncUseCase(true)
-//                                 } else {
-//                                     deleteToDoSyncActionUseCase(item)
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
 }

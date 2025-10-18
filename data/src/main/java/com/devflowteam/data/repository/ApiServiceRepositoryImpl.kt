@@ -1,6 +1,5 @@
 package com.devflowteam.data.repository
 
-import android.util.Log
 import com.devflowteam.core.common.DataError
 import com.devflowteam.core.common.DataSuccess
 import com.devflowteam.core.common.Result
@@ -30,6 +29,7 @@ class ApiServiceRepositoryImpl(
                         8 -> Result.Success(DataSuccess.Network.EXISTS)
                         else -> Result.Error(DataError.Network.EXTERNAL)
                     }
+
                 } else {
                     throw Exception()
                 }

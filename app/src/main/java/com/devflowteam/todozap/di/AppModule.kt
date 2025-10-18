@@ -1,5 +1,6 @@
 package com.devflowteam.todozap.di
 
+import com.devflowteam.feature_creation.CreationViewModel
 import com.devflowteam.feature_home.ui.home.HomeViewModel
 import com.devflowteam.feature_language.LanguageViewModel
 import com.devflowteam.feature_server.ServerViewModel
@@ -12,12 +13,11 @@ val appModule = module {
 
     viewModel {
         StartViewModel(
-            openWebsiteUseCase = get(),
+            migrateServerUseCase = get(),
             checkUserUseCase = get(),
-            changeServerUseCase = get(),
             changeIDUseCase = get(),
-            isFirstLaunchUseCase = get(),
-            addUserUseCase = get()
+            addUserUseCase = get(),
+            changeFirstLaunchUseCase = get()
         )
     }
 
@@ -39,8 +39,7 @@ val appModule = module {
 
     viewModel {
         ServerViewModel(
-            openWebsiteUseCase = get(),
-            migrateDataUseCase = get()
+            migrateServerUseCase = get()
         )
     }
 
@@ -49,6 +48,12 @@ val appModule = module {
             changeLanguageUseCase = get(),
             getFirstLaunchUseCase = get(),
             getIDUseCase = get(),
+        )
+    }
+
+    viewModel {
+        CreationViewModel(
+            upsertToDoUseCase = get()
         )
     }
 }

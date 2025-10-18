@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/background"
+    tools:context="com.devflowteam.feature_creation.CreationFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:menu="@menu/top_app_bar_menu_schedule"
+            app:navigationIcon="@drawable/ic_round_arrow_back_2"
+            app:navigationIconTint="?attr/colorOnPrimary"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/TextAppearance.ToDoZap.TitleMedium" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:hint="@string/title"
+        android:inputType="text|textCapSentences"
+        android:textColorHint="?attr/colorOnPrimary"
+        android:textStyle="bold"
+        android:paddingHorizontal="@dimen/standard_padding"
+        android:paddingTop="@dimen/small_padding"
+        style="@style/TextAppearance.ToDoZap.HeadlineMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollVie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/standard_padding"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/divider">
+
+        <EditText
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:hint="@string/text"
+            android:inputType="textMultiLine|textCapSentences"
+            android:textColor="?attr/colorOutline"
+            android:textColorHint="?attr/colorOutline"
+            style="@style/TextAppearance.ToDoZap.BodyLarge" />
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="?attr/colorOnPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollVie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar" />
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center|start"
+        android:background="?attr/colorPrimaryContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Space
+            android:layout_width="@dimen/standard_padding"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:text="@string/save"
+            android:textColor="?attr/colorPrimaryContainer"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOnPrimary"
+            style="@style/TextAppearance.ToDoZap.LabelMedium" />
+
+        <Space
+            android:layout_width="@dimen/standard_padding"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/transparent"
+            android:text="@string/cancel"
+            android:textColor="?attr/colorOnPrimary"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOnPrimary"
+            style="@style/TextAppearance.ToDoZap.LabelMedium" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

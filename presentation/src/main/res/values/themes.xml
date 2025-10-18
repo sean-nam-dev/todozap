@@ -22,6 +22,7 @@
         <item name="colorErrorContainer">@color/light_pink</item>
         <item name="colorOnErrorContainer">@color/on_light_pink</item>
         <item name="colorOutline">@color/medium_gray</item>
+        <item name="colorPrimaryDark">@color/white_low_alpha</item>
 
         <item name="textAppearanceHeadlineSmall">@style/TextAppearance.ToDoZap.HeadlineSmall</item>
         <item name="textAppearanceTitleLarge">@style/TextAppearance.ToDoZap.TitleLarge</item>
@@ -32,9 +33,16 @@
         <item name="textAppearanceLabelLarge">@style/TextAppearance.ToDoZap.LabelLarge</item>
         <item name="textAppearanceLabelMedium">@style/TextAppearance.ToDoZap.LabelMedium</item>
         <item name="textAppearanceLabelSmall">@style/TextAppearance.ToDoZap.LabelSmall</item>
+        
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
     </style>
 
     <style name="Theme.ToDoZap" parent="Base.Theme.ToDoZap" />
+
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
+        <item name="colorPrimary">@color/on_warm_white</item>
+        <item name="colorOnPrimary">@color/warm_white</item>
+    </style>
 
     <!-- Стиль диалога -->
     <style name="LightDialogTheme" parent="Theme.Material3.Light.Dialog.Alert">
@@ -69,4 +77,5 @@
     <style name="LightDialogNegativeButtonStyle" parent="Widget.Material3.Button.TextButton.Dialog">
         <item name="android:textColor">@color/on_beige</item>
     </style>
+    
 </resources>

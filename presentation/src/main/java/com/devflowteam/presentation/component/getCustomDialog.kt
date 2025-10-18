@@ -10,14 +10,13 @@ import com.devflowteam.presentation.utils.getThemeColor
 import com.devflowteam.presentation.utils.setTextAppearanceCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-fun <T> getCustomDialog(
+fun getCustomDialog(
     context: Context,
     innerView: View,
     titleText: String,
     positiveButtonText: String,
     negativeButtonText: String,
-    extractValue: (View) -> T,
-    onPositiveButtonClickListener: (T) -> Unit
+    onPositiveButtonClickListener: () -> Unit
 ): AlertDialog {
     val titleTextView = TextView(context).apply {
         setTextAppearanceCompat(context, R.style.TextAppearance_ToDoZap_BodyLarge)
@@ -27,7 +26,7 @@ fun <T> getCustomDialog(
     }
 
     return MaterialAlertDialogBuilder(context, R.style.LightDialogTheme)
-        .setPositiveButton(positiveButtonText) { _, _ -> onPositiveButtonClickListener(extractValue(innerView)) }
+        .setPositiveButton(positiveButtonText) { _, _ -> onPositiveButtonClickListener() }
         .setNegativeButton(negativeButtonText) { dialog, _ -> dialog.dismiss() }
         .setView(innerView)
         .setCustomTitle(titleTextView)

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -21,16 +20,19 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import com.devflowteam.core.utils.Links
 import com.devflowteam.data.local.copyToClipboard
+import com.devflowteam.data.remote.ApiService
+import com.devflowteam.domain.usecase.local.todo.UpsertToDoUseCase
+import com.devflowteam.feature_home.utils.Temp
 import com.devflowteam.presentation.main.MainUIAction
 import com.devflowteam.presentation.main.MainViewModel
 import com.devflowteam.presentation.utils.getThemeColor
 import com.devflowteam.todozap.databinding.ActivityMainBinding
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.inject
 
 class MainActivity : AppCompatActivity(), KoinComponent {
 
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
         navController = navHostFragment.navController
 
         setupBottomAppBar()
+        setupFab()
         setupNavControllerDestinationListener()
 
         observeEvents()
@@ -132,18 +135,14 @@ class MainActivity : AppCompatActivity(), KoinComponent {
     private fun setupNavControllerDestinationListener() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                com.devflowteam.feature_start.R.id.startFragment -> {
+                com.devflowteam.feature_start.R.id.startFragment,
+                com.devflowteam.feature_home.R.id.detailFragment -> {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
 
                     binding.bottomAppBar.visibility = View.GONE
                     binding.fab.visibility = View.GONE
                 }
-                com.devflowteam.feature_server.R.id.serverFragment -> {
-                    binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
-
-                    binding.bottomAppBar.visibility = View.VISIBLE
-                    binding.fab.visibility = View.VISIBLE
-                }
+                com.devflowteam.feature_server.R.id.serverFragment,
                 com.devflowteam.feature_language.R.id.languageFragment -> {
                     binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
 
@@ -156,17 +155,19 @@ class MainActivity : AppCompatActivity(), KoinComponent {
                     binding.bottomAppBar.visibility = View.VISIBLE
                     binding.fab.visibility = View.VISIBLE
                 }
-                com.devflowteam.feature_home.R.id.detailFragment -> {
-                    binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.background))
+                com.devflowteam.feature_create.R.id.creationFragment -> {
+                    binding.main.setBackgroundColor(getThemeColor(com.google.android.material.R.attr.colorPrimaryContainer))
 
                     binding.bottomAppBar.visibility = View.GONE
                     binding.fab.visibility = View.GONE
                 }
-//                R.id.detailFragment, R.id.creationFragment -> {
-//                    binding.bottomAppBar.visibility = View.GONE
-//                    binding.fab.visibility = View.GONE
-//                }
             }
+        }
+    }
+
+    private fun setupFab() {
+        binding.fab.setOnClickListener {
+            viewModel.onMainUIAction(MainUIAction.NavigateTo(com.devflowteam.feature_create.R.id.creation_graph))
         }
     }
 

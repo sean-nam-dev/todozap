@@ -33,4 +33,10 @@
     <string name="copied">Скопировано</string>
     <string name="missing_mail_app">Отсутствует почтовое приложение</string>
     <string name="user_id">Пользовательский идентификатор</string>
+    <string name="schedule">Запланировать</string>
+    <string name="title">Заголовок</string>
+    <string name="text">Текст</string>
+    <string name="save">Сохранить</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
+    <string name="select_date">Выберите дату</string>
 </resources>
