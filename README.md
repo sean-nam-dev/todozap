@@ -22,7 +22,7 @@ A cross-device notes and task management Android app with offline and cloud sync
 ## 📸 Screenshots
 | Start | Home | Detail | Settings | 
 |------------|------------|------------|------------|
-| <img width="435" height="957" alt="todozap_start" src="https://github.com/user-attachments/assets/19fab9dc-76f0-49d1-b55a-f4ce5b1510ce" /> | <img width="435" height="957" alt="todozap_home" src="https://github.com/user-attachments/assets/b1ad7da1-0450-4e2c-8c04-9983ef623694" /> | <img width="435" height="957" alt="todozap_detail" src="https://github.com/user-attachments/assets/c3b8b2c5-bbad-4450-aef7-d9fa2a6128c3" /> | <img width="435" height="957" alt="todozap_settings" src="https://github.com/user-attachments/assets/4d0cee62-6753-4c45-a3fd-8e136ac6fcea" /> |
+| ![Start](https://github.com/user-attachments/assets/19fab9dc-76f0-49d1-b55a-f4ce5b1510ce) | ![Home](https://github.com/user-attachments/assets/b1ad7da1-0450-4e2c-8c04-9983ef623694) | ![Detail](https://github.com/user-attachments/assets/c3b8b2c5-bbad-4450-aef7-d9fa2a6128c3) | ![Settings](https://github.com/user-attachments/assets/4d0cee62-6753-4c45-a3fd-8e136ac6fcea) |
 
 ## ⚙️ How It Works
 TodoZap uses a **local Room database** to store notes and tasks offline. The app synchronizes with a **custom PHP REST backend** via Retrofit and OkHttp, and **WorkManager** ensures background sync even when the app is closed. Conflict-handling logic guarantees data integrity across devices.
